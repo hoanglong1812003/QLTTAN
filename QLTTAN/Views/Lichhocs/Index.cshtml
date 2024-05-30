@@ -1,0 +1,65 @@
+﻿@model IEnumerable<QLTTAN.Data.Lichhoc>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Tuan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cahoc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ngayhoc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ghichu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MahvNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MalopNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tuan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cahoc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ngayhoc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ghichu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MahvNavigation.Mahv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MalopNavigation.Malop)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Malh">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Malh">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Malh">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

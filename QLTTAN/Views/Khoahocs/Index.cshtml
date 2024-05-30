@@ -1,0 +1,47 @@
+﻿@model IEnumerable<QLTTAN.Data.Khoahoc>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Tenkh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Noidung)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dongia)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tenkh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Noidung)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dongia)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Makh">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Makh">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Makh">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

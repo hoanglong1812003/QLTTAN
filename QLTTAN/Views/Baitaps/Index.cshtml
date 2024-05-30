@@ -1,0 +1,71 @@
+﻿@model IEnumerable<QLTTAN.Data.Baitap>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Tenbt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tgbatdau)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tgketthuc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ketqua)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Danhgia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MagvNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MahvNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tenbt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tgbatdau)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tgketthuc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ketqua)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Danhgia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MagvNavigation.Magv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MahvNavigation.Mahv)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Mabt">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Mabt">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Mabt">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
