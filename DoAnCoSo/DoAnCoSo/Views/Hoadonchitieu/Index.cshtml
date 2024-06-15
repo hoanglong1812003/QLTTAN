@@ -1,0 +1,41 @@
+﻿@model IEnumerable<DoAnCoSo.Data.Hoadonchitieu>
+
+@{
+    ViewData["Title"] = "Hóa đơn chi tiêu";
+}
+
+<div class="container">
+    <h1 class="mt-4">Danh sách Hóa đơn Chi tiêu</h1>
+    <a class="btn btn-primary mb-3" asp-controller="Home" asp-action="Index"><i class="fas fa-home"></i> Quay về trang chủ</a>
+    <div class="mb-3">
+        <a class="btn btn-primary" asp-action="Create">Tạo mới</a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Nội dung</th>
+                    <th>Số tiền</th>
+                    <th>Nhân viên</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Noidung)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Sotien)</td>
+                        <td>@Html.DisplayFor(modelItem => item.ManvNavigation.Manv)</td>
+                        <td>
+                            <a class="btn btn-sm btn-info" asp-action="Edit" asp-route-id="@item.Mahd">Sửa</a>
+                            <a class="btn btn-sm btn-secondary" asp-action="Details" asp-route-id="@item.Mahd">Chi tiết</a>
+                            <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.Mahd">Xóa</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

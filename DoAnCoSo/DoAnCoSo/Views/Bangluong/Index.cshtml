@@ -1,0 +1,47 @@
+﻿@model IEnumerable<DoAnCoSo.Data.Bangluong>
+
+@{
+    ViewData["Title"] = "Bảng lương";
+}
+
+<div class="container">
+    <h1 class="mt-4">Danh sách lương</h1>
+    <a class="btn btn-primary mb-3" asp-controller="Home" asp-action="Index"><i class="fas fa-home"></i> Quay về trang chủ</a>
+    <div class="mt-4 mb-3">
+        <a class="btn btn-primary" asp-action="Create">Tạo mới</a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Tongsotiet)</th>
+                    <th>@Html.DisplayNameFor(model => model.Hesoluong)</th>
+                    <th>@Html.DisplayNameFor(model => model.Tongtienluong)</th>
+                    <th>@Html.DisplayNameFor(model => model.Ghichu)</th>
+                    <th>@Html.DisplayNameFor(model => model.MagvNavigation)</th>
+                    <th>@Html.DisplayNameFor(model => model.ManvNavigation)</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Tongsotiet)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Hesoluong)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Tongtienluong)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Ghichu)</td>
+                        <td>@Html.DisplayFor(modelItem => item.MagvNavigation.Magv)</td>
+                        <td>@Html.DisplayFor(modelItem => item.ManvNavigation.Manv)</td>
+                        <td>
+                            <a class="btn btn-info btn-sm" asp-action="Edit" asp-route-id="@item.Mabang">Chỉnh sửa</a>
+                            <a class="btn btn-secondary btn-sm" asp-action="Details" asp-route-id="@item.Mabang">Chi tiết</a>
+                            <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.Mabang">Xóa</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

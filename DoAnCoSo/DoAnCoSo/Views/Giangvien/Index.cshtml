@@ -1,0 +1,79 @@
+﻿@model IEnumerable<DoAnCoSo.Data.Giangvien>
+
+@{
+    ViewData["Title"] = "Giảng viên";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="bg-primary text-white p-3 mb-4">
+        <div class="container">
+            <h1 class="m-0">@ViewData["Title"]</h1>
+        </div>
+    </header>
+
+    <div class="container mt-5">
+        <h2 class="mb-4">Danh sách giảng viên</h2>
+        <a class="btn btn-primary mb-3" asp-controller="Home" asp-action="Index"><i class="fas fa-home"></i> Quay về trang chủ</a>
+        <p>
+            <a class="btn btn-success mb-3" asp-action="Create"><i class="fas fa-plus"></i> Create New</a>
+        </p>
+
+        <table class="table table-hover table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Magv)</th>
+                    <th>@Html.DisplayNameFor(model => model.Tengv)</th>
+                    <th>@Html.DisplayNameFor(model => model.Ngaysinh)</th>
+                    <th>@Html.DisplayNameFor(model => model.Gioitinh)</th>
+                    <th>@Html.DisplayNameFor(model => model.Diachi)</th>
+                    <th>@Html.DisplayNameFor(model => model.Socccd)</th>
+                    <th>@Html.DisplayNameFor(model => model.Sdt)</th>
+                    <th>@Html.DisplayNameFor(model => model.Email)</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Magv)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Tengv)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Ngaysinh)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Gioitinh)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Diachi)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Socccd)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Sdt)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                        <td>
+                            <a class="btn btn-warning btn-sm" asp-action="Edit" asp-route-id="@item.Magv"><i class="fas fa-edit"></i> Chỉnh sửa</a>
+                            <a class="btn btn-info btn-sm" asp-action="Details" asp-route-id="@item.Magv"><i class="fas fa-info-circle"></i> Chi tiết</a>
+                            <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.Magv"><i class="fas fa-trash"></i> Xóa</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <footer class="bg-light text-center text-lg-start mt-5">
+        <div class="container p-4">
+            <div class="text-center p-3">
+                © 2024 Your Company
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+﻿@model Views_Taikhoan_Login
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <h2 class="text-center">Login</h2>
+        @if (!string.IsNullOrEmpty(ViewBag.Message))
+        {
+            <div class="alert alert-warning text-center">@ViewBag.Message</div>
+        }
+        <form asp-action="Login" method="post" class="mt-4">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" name="username" class="form-control" id="username" required />
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" class="form-control" id="password" required />
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Login</button>
+            <div class="text-center mt-3">
+                <p>Don't have an account? <a asp-controller="Taikhoan" asp-action="Register">Register here</a></p>
+            </div>
+        </form>
+    </div>
+</div>

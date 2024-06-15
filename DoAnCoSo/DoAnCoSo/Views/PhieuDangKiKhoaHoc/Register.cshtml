@@ -1,0 +1,32 @@
+﻿@model DoAnCoSo.Controllers.PhieuDangKiKhoaHocViewModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h1>Register</h1>
+
+<h4>Đăng ký khóa học</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Register">
+            <div class="form-group">
+                <label asp-for="Tenkh" class="control-label"></label>
+                <input asp-for="Tenkh" class="form-control" readonly />
+            </div>
+            <div class="form-group">
+                <label asp-for="Noidung" class="control-label"></label>
+                <input asp-for="Noidung" class="form-control" readonly />
+            </div>
+            <div class="form-group">
+                <label asp-for="Dongia" class="control-label"></label>
+                <input asp-for="Dongia" class="form-control" readonly />
+            </div>
+            <input type="hidden" asp-for="Makh" />
+            <div class="form-group">
+                <input type="submit" value="Register" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
