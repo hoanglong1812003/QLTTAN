@@ -52,8 +52,6 @@ namespace DoAnCoSo.Controllers
         }
 
         // POST: Lophoc/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Malop,Makh,Tenlop,Tgtao,Ngaynhaphoc,Ngayketthuc")] Lophoc lophoc)
@@ -62,10 +60,34 @@ namespace DoAnCoSo.Controllers
             {
                 _context.Add(lophoc);
                 await _context.SaveChangesAsync();
+
+                // Tạo các mục Lichhoc mới cho lớp học vừa tạo
+                CreateLichhocEntries(lophoc.Malop);
+
                 return RedirectToAction(nameof(Index));
             }
             ViewData["Makh"] = new SelectList(_context.Khoahocs, "Makh", "Makh", lophoc.Makh);
             return View(lophoc);
+        }
+
+        // Hàm để tạo các mục Lichhoc mới
+        private void CreateLichhocEntries(int malop)
+        {
+            // Logic tạo các mục Lichhoc
+            // Ví dụ: tạo một lịch học mỗi tuần trong 10 tuần
+            for (int i = 0; i < 10; i++)
+            {
+                var lichhoc = new Lichhoc
+                {
+                    Malop = malop,
+                    Tuan = $"Tuần {i + 1}",
+                    Cahoc = "Sáng", // hoặc "Chiều", "Tối" tùy theo yêu cầu
+                    Ngayhoc = DateTime.Now.AddDays(i * 7), // Cứ mỗi tuần một lần
+                    Ghichu = "Lịch học tự động tạo"
+                };
+                _context.Lichhocs.Add(lichhoc);
+            }
+            _context.SaveChanges();
         }
 
         // GET: Lophoc/Edit/5
@@ -86,8 +108,6 @@ namespace DoAnCoSo.Controllers
         }
 
         // POST: Lophoc/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Malop,Makh,Tenlop,Tgtao,Ngaynhaphoc,Ngayketthuc")] Lophoc lophoc)

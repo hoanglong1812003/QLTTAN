@@ -19,9 +19,18 @@ namespace DoAnCoSo.Controllers
         }
 
         // GET: Hocvien
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
             var quanLyTrungTamAnhNguContext = _context.Hocviens.Include(h => h.UsernameNavigation);
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                ViewData["CurrentFilter"] = searchString;
+                var hocviens = from h in _context.Hocviens.Include(h => h.UsernameNavigation)
+                               select h;
+
+            }
+
             return View(await quanLyTrungTamAnhNguContext.ToListAsync());
         }
 

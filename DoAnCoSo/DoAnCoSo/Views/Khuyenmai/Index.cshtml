@@ -1,35 +1,32 @@
 ﻿@model IEnumerable<DoAnCoSo.Data.Khuyenmai>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Danh sách khuyến mãi";
 }
 
-<h1>Index</h1>
+<h1>Danh sách khuyến mãi</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a class="btn btn-primary" asp-action="Create">Tạo mới</a>
 </p>
-<table class="table">
-    <thead>
+<table class="table table-striped table-bordered">
+    <thead class="thead-dark">
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Noidung)
-            </th>
-            <th></th>
+            <th scope="col">Nội dung khuyến mãi</th>
+            <th scope="col">Thao tác</th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Noidung)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Makm">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Makm">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Makm">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Noidung)</td>
+                <td>
+                    <a class="btn btn-sm btn-info" asp-action="Details" asp-route-id="@item.Makm">Chi tiết</a>
+                    <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@item.Makm">Sửa</a>
+                    <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.Makm">Xóa</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

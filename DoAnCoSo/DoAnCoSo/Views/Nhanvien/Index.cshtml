@@ -1,83 +1,48 @@
 ﻿@model IEnumerable<DoAnCoSo.Data.Nhanvien>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Danh sách nhân viên";
 }
 
-<h1>Index</h1>
+<h1>Danh sách nhân viên</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a class="btn btn-primary" asp-action="Create">Thêm mới</a>
 </p>
-<table class="table">
-    <thead>
+<table class="table table-striped table-bordered">
+    <thead class="thead-dark">
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Tennv)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Ngaysinh)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Gioitinh)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Diachi)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Socccd)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Sdt)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Chucvu)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UsernameNavigation)
-            </th>
-            <th></th>
+            <th scope="col">Tên nhân viên</th>
+            <th scope="col">Ngày sinh</th>
+            <th scope="col">Giới tính</th>
+            <th scope="col">Địa chỉ</th>
+            <th scope="col">Số CCCD</th>
+            <th scope="col">Số điện thoại</th>
+            <th scope="col">Email</th>
+            <th scope="col">Chức vụ</th>
+            <th scope="col">Username</th>
+            <th scope="col">Thao tác</th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tennv)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ngaysinh)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Gioitinh)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Diachi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Socccd)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Sdt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Chucvu)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UsernameNavigation.Username)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Manv">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Manv">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Manv">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Tennv)</td>
+                <td>@Html.DisplayFor(modelItem => item.Ngaysinh)</td>
+                <td>@Html.DisplayFor(modelItem => item.Gioitinh)</td>
+                <td>@Html.DisplayFor(modelItem => item.Diachi)</td>
+                <td>@Html.DisplayFor(modelItem => item.Socccd)</td>
+                <td>@Html.DisplayFor(modelItem => item.Sdt)</td>
+                <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                <td>@Html.DisplayFor(modelItem => item.Chucvu)</td>
+                <td>@Html.DisplayFor(modelItem => item.UsernameNavigation.Username)</td>
+                <td>
+                    <a class="btn btn-sm btn-info" asp-action="Details" asp-route-id="@item.Manv">Chi tiết</a>
+                    <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@item.Manv">Sửa</a>
+                    <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.Manv">Xóa</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

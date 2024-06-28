@@ -1,65 +1,42 @@
 ﻿@model IEnumerable<DoAnCoSo.Data.Lichday>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Lịch dạy";
 }
 
-<h1>Index</h1>
+<h1>Lịch dạy</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a class="btn btn-primary" asp-action="Create">Tạo mới</a>
 </p>
-<table class="table">
-    <thead>
+<table class="table table-striped table-bordered">
+    <thead class="thead-dark">
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Tuan)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Caday)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Ngayday)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Ghichu)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MagvNavigation)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MalopNavigation)
-            </th>
-            <th></th>
+            <th scope="col">Tuần</th>
+            <th scope="col">Ca dạy</th>
+            <th scope="col">Ngày dạy</th>
+            <th scope="col">Ghi chú</th>
+            <th scope="col">Giáo viên</th>
+            <th scope="col">Lớp</th>
+            <th scope="col">Thao tác</th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tuan)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Caday)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ngayday)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ghichu)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MagvNavigation.Magv)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MalopNavigation.Malop)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Mald">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Mald">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Mald">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Tuan)</td>
+                <td>@Html.DisplayFor(modelItem => item.Caday)</td>
+                <td>@Html.DisplayFor(modelItem => item.Ngayday)</td>
+                <td>@Html.DisplayFor(modelItem => item.Ghichu)</td>
+                <td>@Html.DisplayFor(modelItem => item.MagvNavigation.Magv)</td>
+                <td>@Html.DisplayFor(modelItem => item.MalopNavigation.Malop)</td>
+                <td>
+                    <a class="btn btn-sm btn-info" asp-action="Details" asp-route-id="@item.Mald">Chi tiết</a>
+                    <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@item.Mald">Sửa</a>
+                    <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.Mald">Xóa</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

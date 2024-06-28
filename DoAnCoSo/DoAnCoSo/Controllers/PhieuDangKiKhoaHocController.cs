@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using DoAnCoSo.Data;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 
 namespace DoAnCoSo.Controllers
 {
@@ -75,6 +76,65 @@ namespace DoAnCoSo.Controllers
 
             return View(model);
         }
+        [HttpGet]
+        public IActionResult Index()
+        {
+            // Lấy danh sách các phiếu đăng kí khóa học cho học viên đã đăng nhập
+            var mahv = HttpContext.Session.GetInt32("Mahv");
+            if (mahv == null)
+            {
+                return Unauthorized();
+            }
+
+            var phieus = _context.Phieudangkikhoahocs
+                .Include(p => p.MakhNavigation)
+                .Where(p => p.Mahv == mahv)
+                .ToList();
+
+            return View(phieus);
+        }
+        // Action chi tiết phiếu đăng kí
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var phieuDangKi = await _context.Phieudangkikhoahocs
+                .Include(p => p.MakhNavigation) // Load navigation property MakhNavigation
+                .FirstOrDefaultAsync(p => p.Madki == id);
+
+            if (phieuDangKi == null)
+            {
+                return NotFound();
+            }
+
+            return View(phieuDangKi);
+        }
+
+        // Action xóa phiếu đăng kí
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var phieuDangKi = await _context.Phieudangkikhoahocs.FindAsync(id);
+
+            if (phieuDangKi == null)
+            {
+                return NotFound();
+            }
+
+            _context.Phieudangkikhoahocs.Remove(phieuDangKi);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
+
+
     }
 
     public class PhieuDangKiKhoaHocViewModel

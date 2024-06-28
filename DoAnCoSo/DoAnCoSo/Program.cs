@@ -19,8 +19,7 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 
-// Register the custom action filter
-builder.Services.AddScoped<AuthFilter>();
+builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 
@@ -38,7 +37,7 @@ app.UseRouting();
 
 // Use session
 app.UseSession();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
@@ -46,3 +45,4 @@ app.MapControllerRoute(
     pattern: "{controller=Taikhoan}/{action=Login}/{id?}");
 
 app.Run();
+

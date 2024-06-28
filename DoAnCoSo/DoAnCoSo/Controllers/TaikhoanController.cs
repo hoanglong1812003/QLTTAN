@@ -91,5 +91,59 @@ namespace DoAnCoSo.Controllers
             HttpContext.Session.Clear();
             return RedirectToAction("Login");
         }
+
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        public IActionResult Index()
+        {
+            var accounts = _context.Taikhoans.ToList();
+            return View(accounts);
+        }
+
+        
+
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Create([Bind("Username,Password,Loaiuser")] Taikhoan taikhoan)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(taikhoan);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(taikhoan);
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        public IActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var taikhoan = _context.Taikhoans.Find(id);
+            if (taikhoan == null)
+            {
+                return NotFound();
+            }
+            return View(taikhoan);
+        }
+
+      
+
+      
+
+       
     }
 }

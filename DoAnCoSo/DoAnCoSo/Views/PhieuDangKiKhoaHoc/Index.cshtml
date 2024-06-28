@@ -1,0 +1,38 @@
+﻿@model List<DoAnCoSo.Data.Phieudangkikhoahoc>
+
+@{
+    ViewData["Title"] = "Danh sách khóa học đã đăng kí";
+}
+
+<div class="container">
+    <h1 class="display-4">@ViewData["Title"]</h1>
+
+    <div class="row mt-4">
+        <div class="col">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">STT</th>
+                        <th scope="col">Tên khóa học</th>
+                        <th scope="col">Ngày đăng kí</th>
+                        <th scope="col">Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var phieu in Model)
+                    {
+                        <tr>
+                            <td>@phieu.MakhNavigation.Makh</td>
+                            <td>@phieu.MakhNavigation.Tenkh</td>
+                            <td>@(phieu.Ngaydki.HasValue ? phieu.Ngaydki.Value.ToString("dd/MM/yyyy") : "N/A")</td>
+                            <td>
+                                <a class="btn btn-primary btn-sm" asp-action="Details" asp-route-id="@phieu.Madki">Chi tiết</a>
+                                <a class="btn btn-danger btn-sm ml-2" asp-action="Delete" asp-route-id="@phieu.Madki">Xóa</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

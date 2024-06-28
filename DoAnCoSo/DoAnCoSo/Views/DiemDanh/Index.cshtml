@@ -1,0 +1,49 @@
+﻿@model IEnumerable<DoAnCoSo.Data.Phieudiemdanh>
+
+@{
+    ViewData["Title"] = "Danh sách Điểm Danh";
+    var loaiuser = ViewBag.Loaiuser as string;
+}
+
+<h2>Danh sách Điểm Danh</h2>
+
+@if (loaiuser == "Giangvien" || loaiuser == "Admin")
+{
+    <p>
+        <a asp-action="Create">Tạo Phiếu Điểm Danh Mới</a>
+    </p>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Giảng viên</th>
+            <th>Lịch học</th>
+            <th>Học viên</th>
+            <th>Trạng thái</th>
+            <th>Ghi chú</th>
+            @if (loaiuser == "Giangvien" || loaiuser == "Admin")
+            {
+                <th></th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.MagvNavigation.Tengv</td>
+                <td>@item.MalhNavigation.Tuan - @item.MalhNavigation.Cahoc</td>
+                <td>@item.MahvNavigation.Tenhv</td>
+                <td>@item.Trangthai</td>
+                <td>@item.Ghichu</td>
+                @if (loaiuser == "Giangvien" || loaiuser == "Admin")
+                {
+                    <td>
+                        <a asp-action="Delete" asp-route-id="@item.Madd">Xóa</a>
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>

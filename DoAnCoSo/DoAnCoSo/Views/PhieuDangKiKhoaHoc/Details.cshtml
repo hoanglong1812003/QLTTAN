@@ -1,0 +1,28 @@
+﻿@model DoAnCoSo.Data.Phieudangkikhoahoc
+
+@{
+    ViewData["Title"] = "Chi tiết phiếu đăng kí khóa học";
+}
+
+<div class="container">
+    <h1>@ViewData["Title"]</h1>
+
+    <dl class="row">
+        <dt class="col-sm-2">Mã phiếu đăng kí:</dt>
+        <dd class="col-sm-10">@Model.Madki</dd>
+
+        <dt class="col-sm-2">Mã học viên:</dt>
+        <dd class="col-sm-10">@Model.Mahv</dd>
+
+        <dt class="col-sm-2">Tên khóa học:</dt>
+        <dd class="col-sm-10">@Model.MakhNavigation.Tenkh</dd>
+
+        <dt class="col-sm-2">Ngày đăng kí:</dt>
+        <dd class="col-sm-10>@(Model.Ngaydki.HasValue ? Model.Ngaydki.Value.ToString("dd/MM/yyyy") : "N/A")</dd>
+    </dl>
+
+    <div class="form-group">
+        <a asp-action="Index" class="btn btn-primary">Quay lại danh sách</a>
+        <a asp-action="Delete" asp-route-id="@Model.Madki" class="btn btn-danger">Xóa phiếu đăng kí</a>
+    </div>
+</div>

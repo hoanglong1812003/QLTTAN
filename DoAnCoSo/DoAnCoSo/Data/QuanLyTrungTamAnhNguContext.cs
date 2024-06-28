@@ -76,20 +76,14 @@ public partial class QuanLyTrungTamAnhNguContext : DbContext
             entity.Property(e => e.Mabaikt)
                 .ValueGeneratedNever()
                 .HasColumnName("MABAIKT");
-            entity.Property(e => e.Danhgia)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("DANHGIA");
+            entity.Property(e => e.Danhgia).HasColumnName("DANHGIA");
             entity.Property(e => e.Ketqua).HasColumnName("KETQUA");
             entity.Property(e => e.Magv).HasColumnName("MAGV");
             entity.Property(e => e.Mahv).HasColumnName("MAHV");
             entity.Property(e => e.Ngaykt)
                 .HasColumnType("datetime")
                 .HasColumnName("NGAYKT");
-            entity.Property(e => e.Tenbaikt)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("TENBAIKT");
+            entity.Property(e => e.Tenbaikt).HasColumnName("TENBAIKT");
             entity.Property(e => e.Tgbatdau)
                 .HasColumnType("datetime")
                 .HasColumnName("TGBATDAU");
@@ -121,17 +115,11 @@ public partial class QuanLyTrungTamAnhNguContext : DbContext
             entity.Property(e => e.Mabt)
                 .ValueGeneratedNever()
                 .HasColumnName("MABT");
-            entity.Property(e => e.Danhgia)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("DANHGIA");
+            entity.Property(e => e.Danhgia).HasColumnName("DANHGIA");
             entity.Property(e => e.Ketqua).HasColumnName("KETQUA");
             entity.Property(e => e.Magv).HasColumnName("MAGV");
             entity.Property(e => e.Mahv).HasColumnName("MAHV");
-            entity.Property(e => e.Tenbt)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("TENBT");
+            entity.Property(e => e.Tenbt).HasColumnName("TENBT");
             entity.Property(e => e.Tgbatdau)
                 .HasColumnType("datetime")
                 .HasColumnName("TGBATDAU");
@@ -163,20 +151,11 @@ public partial class QuanLyTrungTamAnhNguContext : DbContext
             entity.Property(e => e.Mabang)
                 .ValueGeneratedNever()
                 .HasColumnName("MABANG");
-            entity.Property(e => e.Ghichu)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("GHICHU");
-            entity.Property(e => e.Hesoluong)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("HESOLUONG");
+            entity.Property(e => e.Ghichu).HasColumnName("GHICHU");
+            entity.Property(e => e.Hesoluong).HasColumnName("HESOLUONG");
             entity.Property(e => e.Magv).HasColumnName("MAGV");
             entity.Property(e => e.Manv).HasColumnName("MANV");
-            entity.Property(e => e.Tongsotiet)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("TONGSOTIET");
+            entity.Property(e => e.Tongsotiet).HasColumnName("TONGSOTIET");
             entity.Property(e => e.Tongtienluong)
                 .HasColumnType("money")
                 .HasColumnName("TONGTIENLUONG");
@@ -204,10 +183,7 @@ public partial class QuanLyTrungTamAnhNguContext : DbContext
 
             entity.Property(e => e.Makh).HasColumnName("MAKH");
             entity.Property(e => e.Maphieu).HasColumnName("MAPHIEU");
-            entity.Property(e => e.Mota)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("MOTA");
+            entity.Property(e => e.Mota).HasColumnName("MOTA");
 
             entity.HasOne(d => d.MakhNavigation).WithMany(p => p.CtHocphis)
                 .HasForeignKey(d => d.Makh)
@@ -262,10 +238,7 @@ public partial class QuanLyTrungTamAnhNguContext : DbContext
 
             entity.Property(e => e.Matb).HasColumnName("MATB");
             entity.Property(e => e.Sophieu).HasColumnName("SOPHIEU");
-            entity.Property(e => e.Ghichu)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("GHICHU");
+            entity.Property(e => e.Ghichu).HasColumnName("GHICHU");
             entity.Property(e => e.Ngaylapdat)
                 .HasColumnType("datetime")
                 .HasColumnName("NGAYLAPDAT");
@@ -292,18 +265,12 @@ public partial class QuanLyTrungTamAnhNguContext : DbContext
             entity.Property(e => e.Magv)
                 .ValueGeneratedNever()
                 .HasColumnName("MAGV");
-            entity.Property(e => e.Diachi)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("DIACHI");
+            entity.Property(e => e.Diachi).HasColumnName("DIACHI");
             entity.Property(e => e.Email)
                 .HasMaxLength(100)
                 .IsUnicode(false)
                 .HasColumnName("EMAIL");
-            entity.Property(e => e.Gioitinh)
-                .HasMaxLength(5)
-                .IsUnicode(false)
-                .HasColumnName("GIOITINH");
+            entity.Property(e => e.Gioitinh).HasColumnName("GIOITINH");
             entity.Property(e => e.Ngaysinh)
                 .HasColumnType("datetime")
                 .HasColumnName("NGAYSINH");
@@ -315,14 +282,8 @@ public partial class QuanLyTrungTamAnhNguContext : DbContext
                 .HasMaxLength(12)
                 .IsUnicode(false)
                 .HasColumnName("SOCCCD");
-            entity.Property(e => e.Tengv)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("TENGV");
-            entity.Property(e => e.Trinhdo)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("TRINHDO");
+            entity.Property(e => e.Tengv).HasColumnName("TENGV");
+            entity.Property(e => e.Trinhdo).HasColumnName("TRINHDO");
             entity.Property(e => e.Username)
                 .HasMaxLength(100)
                 .IsUnicode(false)
@@ -345,10 +306,7 @@ public partial class QuanLyTrungTamAnhNguContext : DbContext
                 .ValueGeneratedNever()
                 .HasColumnName("MAHD");
             entity.Property(e => e.Manv).HasColumnName("MANV");
-            entity.Property(e => e.Noidung)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("NOIDUNG");
+            entity.Property(e => e.Noidung).HasColumnName("NOIDUNG");
             entity.Property(e => e.Sotien)
                 .HasColumnType("money")
                 .HasColumnName("SOTIEN");
@@ -370,18 +328,12 @@ public partial class QuanLyTrungTamAnhNguContext : DbContext
             entity.Property(e => e.Mahv)
                 .ValueGeneratedNever()
                 .HasColumnName("MAHV");
-            entity.Property(e => e.Diachi)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("DIACHI");
+            entity.Property(e => e.Diachi).HasColumnName("DIACHI");
             entity.Property(e => e.Email)
                 .HasMaxLength(100)
                 .IsUnicode(false)
                 .HasColumnName("EMAIL");
-            entity.Property(e => e.Gioitinh)
-                .HasMaxLength(5)
-                .IsUnicode(false)
-                .HasColumnName("GIOITINH");
+            entity.Property(e => e.Gioitinh).HasColumnName("GIOITINH");
             entity.Property(e => e.Ngaysinh)
                 .HasColumnType("datetime")
                 .HasColumnName("NGAYSINH");
@@ -416,14 +368,8 @@ public partial class QuanLyTrungTamAnhNguContext : DbContext
             entity.Property(e => e.Dongia)
                 .HasColumnType("money")
                 .HasColumnName("DONGIA");
-            entity.Property(e => e.Noidung)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("NOIDUNG");
-            entity.Property(e => e.Tenkh)
-                .HasMaxLength(59)
-                .IsUnicode(false)
-                .HasColumnName("TENKH");
+            entity.Property(e => e.Noidung).HasColumnName("NOIDUNG");
+            entity.Property(e => e.Tenkh).HasColumnName("TENKH");
         });
 
         modelBuilder.Entity<Khuyenmai>(entity =>
@@ -435,10 +381,7 @@ public partial class QuanLyTrungTamAnhNguContext : DbContext
             entity.Property(e => e.Makm)
                 .ValueGeneratedNever()
                 .HasColumnName("MAKM");
-            entity.Property(e => e.Noidung)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("NOIDUNG");
+            entity.Property(e => e.Noidung).HasColumnName("NOIDUNG");
         });
 
         modelBuilder.Entity<Lichday>(entity =>
@@ -454,23 +397,14 @@ public partial class QuanLyTrungTamAnhNguContext : DbContext
             entity.Property(e => e.Mald)
                 .ValueGeneratedNever()
                 .HasColumnName("MALD");
-            entity.Property(e => e.Caday)
-                .HasMaxLength(20)
-                .IsUnicode(false)
-                .HasColumnName("CADAY");
-            entity.Property(e => e.Ghichu)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("GHICHU");
+            entity.Property(e => e.Caday).HasColumnName("CADAY");
+            entity.Property(e => e.Ghichu).HasColumnName("GHICHU");
             entity.Property(e => e.Magv).HasColumnName("MAGV");
             entity.Property(e => e.Malop).HasColumnName("MALOP");
             entity.Property(e => e.Ngayday)
                 .HasColumnType("datetime")
                 .HasColumnName("NGAYDAY");
-            entity.Property(e => e.Tuan)
-                .HasMaxLength(20)
-                .IsUnicode(false)
-                .HasColumnName("TUAN");
+            entity.Property(e => e.Tuan).HasColumnName("TUAN");
 
             entity.HasOne(d => d.MagvNavigation).WithMany(p => p.Lichdays)
                 .HasForeignKey(d => d.Magv)
@@ -496,23 +430,14 @@ public partial class QuanLyTrungTamAnhNguContext : DbContext
             entity.Property(e => e.Malh)
                 .ValueGeneratedNever()
                 .HasColumnName("MALH");
-            entity.Property(e => e.Cahoc)
-                .HasMaxLength(20)
-                .IsUnicode(false)
-                .HasColumnName("CAHOC");
-            entity.Property(e => e.Ghichu)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("GHICHU");
+            entity.Property(e => e.Cahoc).HasColumnName("CAHOC");
+            entity.Property(e => e.Ghichu).HasColumnName("GHICHU");
             entity.Property(e => e.Mahv).HasColumnName("MAHV");
             entity.Property(e => e.Malop).HasColumnName("MALOP");
             entity.Property(e => e.Ngayhoc)
                 .HasColumnType("datetime")
                 .HasColumnName("NGAYHOC");
-            entity.Property(e => e.Tuan)
-                .HasMaxLength(20)
-                .IsUnicode(false)
-                .HasColumnName("TUAN");
+            entity.Property(e => e.Tuan).HasColumnName("TUAN");
 
             entity.HasOne(d => d.MahvNavigation).WithMany(p => p.Lichhocs)
                 .HasForeignKey(d => d.Mahv)
@@ -533,9 +458,7 @@ public partial class QuanLyTrungTamAnhNguContext : DbContext
 
             entity.HasIndex(e => e.Makh, "THUOC_FK");
 
-            entity.Property(e => e.Malop)
-                .ValueGeneratedNever()
-                .HasColumnName("MALOP");
+            entity.Property(e => e.Malop).HasColumnName("MALOP");
             entity.Property(e => e.Makh).HasColumnName("MAKH");
             entity.Property(e => e.Ngayketthuc)
                 .HasColumnType("datetime")
@@ -543,17 +466,13 @@ public partial class QuanLyTrungTamAnhNguContext : DbContext
             entity.Property(e => e.Ngaynhaphoc)
                 .HasColumnType("datetime")
                 .HasColumnName("NGAYNHAPHOC");
-            entity.Property(e => e.Tenlop)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("TENLOP");
+            entity.Property(e => e.Tenlop).HasColumnName("TENLOP");
             entity.Property(e => e.Tgtao)
                 .HasColumnType("datetime")
                 .HasColumnName("TGTAO");
 
             entity.HasOne(d => d.MakhNavigation).WithMany(p => p.Lophocs)
                 .HasForeignKey(d => d.Makh)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_LOPHOC_THUOC_KHOAHOC");
         });
 
@@ -568,22 +487,13 @@ public partial class QuanLyTrungTamAnhNguContext : DbContext
             entity.Property(e => e.Manv)
                 .ValueGeneratedNever()
                 .HasColumnName("MANV");
-            entity.Property(e => e.Chucvu)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("CHUCVU");
-            entity.Property(e => e.Diachi)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("DIACHI");
+            entity.Property(e => e.Chucvu).HasColumnName("CHUCVU");
+            entity.Property(e => e.Diachi).HasColumnName("DIACHI");
             entity.Property(e => e.Email)
                 .HasMaxLength(100)
                 .IsUnicode(false)
                 .HasColumnName("EMAIL");
-            entity.Property(e => e.Gioitinh)
-                .HasMaxLength(5)
-                .IsUnicode(false)
-                .HasColumnName("GIOITINH");
+            entity.Property(e => e.Gioitinh).HasColumnName("GIOITINH");
             entity.Property(e => e.Ngaysinh)
                 .HasColumnType("datetime")
                 .HasColumnName("NGAYSINH");
@@ -595,10 +505,7 @@ public partial class QuanLyTrungTamAnhNguContext : DbContext
                 .HasMaxLength(12)
                 .IsUnicode(false)
                 .HasColumnName("SOCCCD");
-            entity.Property(e => e.Tennv)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("TENNV");
+            entity.Property(e => e.Tennv).HasColumnName("TENNV");
             entity.Property(e => e.Username)
                 .HasMaxLength(100)
                 .IsUnicode(false)
@@ -619,9 +526,7 @@ public partial class QuanLyTrungTamAnhNguContext : DbContext
 
             entity.HasIndex(e => e.Makh, "KHOAHOC_FK");
 
-            entity.Property(e => e.Madki)
-                .ValueGeneratedNever()
-                .HasColumnName("MADKI");
+            entity.Property(e => e.Madki).HasColumnName("MADKI");
             entity.Property(e => e.Mahv).HasColumnName("MAHV");
             entity.Property(e => e.Makh).HasColumnName("MAKH");
             entity.Property(e => e.Ngaydki)
@@ -635,7 +540,6 @@ public partial class QuanLyTrungTamAnhNguContext : DbContext
 
             entity.HasOne(d => d.MakhNavigation).WithMany(p => p.Phieudangkikhoahocs)
                 .HasForeignKey(d => d.Makh)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_PHIEUDAN_KHOAHOC_KHOAHOC");
         });
 
@@ -652,21 +556,19 @@ public partial class QuanLyTrungTamAnhNguContext : DbContext
             entity.Property(e => e.Madd)
                 .ValueGeneratedNever()
                 .HasColumnName("MADD");
-            entity.Property(e => e.Ghichu)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("GHICHU");
+            entity.Property(e => e.Ghichu).HasColumnName("GHICHU");
             entity.Property(e => e.Magv).HasColumnName("MAGV");
             entity.Property(e => e.Malh).HasColumnName("MALH");
-            entity.Property(e => e.Trangthai)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .HasColumnName("TRANGTHAI");
+            entity.Property(e => e.Trangthai).HasColumnName("TRANGTHAI");
 
             entity.HasOne(d => d.MagvNavigation).WithMany(p => p.Phieudiemdanhs)
                 .HasForeignKey(d => d.Magv)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_PHIEUDIE_KIEMTRA_GIANGVIE");
+
+            entity.HasOne(d => d.MahvNavigation).WithMany(p => p.Phieudiemdanhs)
+                .HasForeignKey(d => d.Mahv)
+                .HasConstraintName("FK_Phieudiemdanh_Hocvien");
 
             entity.HasOne(d => d.MalhNavigation).WithMany(p => p.Phieudiemdanhs)
                 .HasForeignKey(d => d.Malh)
@@ -689,10 +591,7 @@ public partial class QuanLyTrungTamAnhNguContext : DbContext
                 .HasColumnName("SOPHIEU");
             entity.Property(e => e.Mahd).HasColumnName("MAHD");
             entity.Property(e => e.Manv).HasColumnName("MANV");
-            entity.Property(e => e.Noidung)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("NOIDUNG");
+            entity.Property(e => e.Noidung).HasColumnName("NOIDUNG");
             entity.Property(e => e.Soluong).HasColumnName("SOLUONG");
             entity.Property(e => e.Thanhtien)
                 .HasColumnType("money")
@@ -752,10 +651,7 @@ public partial class QuanLyTrungTamAnhNguContext : DbContext
                 .HasMaxLength(100)
                 .IsUnicode(false)
                 .HasColumnName("USERNAME");
-            entity.Property(e => e.Loaiuser)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("LOAIUSER");
+            entity.Property(e => e.Loaiuser).HasColumnName("LOAIUSER");
             entity.Property(e => e.Password)
                 .HasMaxLength(100)
                 .IsUnicode(false)
@@ -771,17 +667,11 @@ public partial class QuanLyTrungTamAnhNguContext : DbContext
             entity.Property(e => e.Matb)
                 .ValueGeneratedNever()
                 .HasColumnName("MATB");
-            entity.Property(e => e.Dvt)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .HasColumnName("DVT");
+            entity.Property(e => e.Dvt).HasColumnName("DVT");
             entity.Property(e => e.Giatien)
                 .HasColumnType("money")
                 .HasColumnName("GIATIEN");
-            entity.Property(e => e.Tentb)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("TENTB");
+            entity.Property(e => e.Tentb).HasColumnName("TENTB");
         });
 
         OnModelCreatingPartial(modelBuilder);

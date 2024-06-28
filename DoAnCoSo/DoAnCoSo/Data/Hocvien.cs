@@ -31,6 +31,8 @@ public partial class Hocvien
 
     public virtual ICollection<Phieudangkikhoahoc> Phieudangkikhoahocs { get; set; } = new List<Phieudangkikhoahoc>();
 
+    public virtual ICollection<Phieudiemdanh> Phieudiemdanhs { get; set; } = new List<Phieudiemdanh>();
+
     public virtual ICollection<Phieuthuhocphi> Phieuthuhocphis { get; set; } = new List<Phieuthuhocphi>();
 
     public virtual Taikhoan? UsernameNavigation { get; set; }
