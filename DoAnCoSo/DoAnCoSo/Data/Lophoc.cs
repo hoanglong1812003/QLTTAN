@@ -21,5 +21,5 @@ public partial class Lophoc
 
     public virtual ICollection<Lichhoc> Lichhocs { get; set; } = new List<Lichhoc>();
 
-    public virtual Khoahoc MakhNavigation { get; set; } = null!;
+    public virtual Khoahoc? MakhNavigation { get; set; } = null!;
 }

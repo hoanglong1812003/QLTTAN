@@ -13,7 +13,7 @@ public partial class Phieudangkikhoahoc
 
     public DateTime? Ngaydki { get; set; }
 
-    public virtual Hocvien MahvNavigation { get; set; } = null!;
+    public virtual Hocvien? MahvNavigation { get; set; } = null!;
 
-    public virtual Khoahoc MakhNavigation { get; set; } = null!;
+    public virtual Khoahoc? MakhNavigation { get; set; } = null!;
 }

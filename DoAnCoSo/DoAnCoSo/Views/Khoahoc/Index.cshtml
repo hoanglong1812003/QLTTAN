@@ -5,7 +5,7 @@
 }
 
 <h1>Danh sách khóa học</h1>
-
+<a class="btn btn-success mb-3" asp-action="Create"><i class="fas fa-plus"></i> Tạo mới</a>
 <table class="table table-striped">
     <thead>
         <tr>
@@ -23,10 +23,10 @@
                 <td>@Html.DisplayFor(modelItem => item.Noidung)</td>
                 <td>@Html.DisplayFor(modelItem => item.Dongia)</td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Makh" class="btn btn-primary">Edit</a>
-                    <a asp-action="Details" asp-route-id="@item.Makh" class="btn btn-info">Details</a>
-                    <a asp-action="Delete" asp-route-id="@item.Makh" class="btn btn-danger">Delete</a>
-                    <a asp-controller="PhieuDangKiKhoaHoc" asp-action="Register" asp-route-id="@item.Makh" class="btn btn-success">Register</a>
+                    <a asp-action="Edit" asp-route-id="@item.Makh" class="btn btn-primary">Chỉnh sửa</a>
+                    <a asp-action="Details" asp-route-id="@item.Makh" class="btn btn-info">Chi tiết</a>
+                    <a asp-action="Delete" asp-route-id="@item.Makh" class="btn btn-danger">Xóa</a>
+                    <a asp-controller="PhieuDangKiKhoaHoc" asp-action="Register" asp-route-id="@item.Makh" class="btn btn-success">Đăng ký</a>
                 </td>
             </tr>
         }

@@ -11,7 +11,7 @@ public partial class CtHocphi
 
     public string? Mota { get; set; }
 
-    public virtual Khoahoc MakhNavigation { get; set; } = null!;
+    public virtual Khoahoc? MakhNavigation { get; set; } = null!;
 
-    public virtual Phieuthuhocphi MaphieuNavigation { get; set; } = null!;
+    public virtual Phieuthuhocphi? MaphieuNavigation { get; set; } = null!;
 }

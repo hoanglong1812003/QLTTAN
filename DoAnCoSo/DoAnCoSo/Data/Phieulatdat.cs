@@ -19,7 +19,7 @@ public partial class Phieulatdat
 
     public virtual ICollection<CtLapdat> CtLapdats { get; set; } = new List<CtLapdat>();
 
-    public virtual Hoadonchitieu MahdNavigation { get; set; } = null!;
+    public virtual Hoadonchitieu? MahdNavigation { get; set; } = null!;
 
-    public virtual Nhanvien ManvNavigation { get; set; } = null!;
+    public virtual Nhanvien? ManvNavigation { get; set; } = null!;
 }

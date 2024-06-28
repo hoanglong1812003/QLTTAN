@@ -25,7 +25,7 @@ public partial class Baikiemtra
 
     public string? FilePath { get; set; }
 
-    public virtual Giangvien MagvNavigation { get; set; } = null!;
+    public virtual Giangvien? MagvNavigation { get; set; } = null!;
 
-    public virtual Hocvien MahvNavigation { get; set; } = null!;
+    public virtual Hocvien? MahvNavigation { get; set; } = null!;
 }

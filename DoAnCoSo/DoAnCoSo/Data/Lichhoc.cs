@@ -19,9 +19,9 @@ public partial class Lichhoc
 
     public string? Ghichu { get; set; }
 
-    public virtual Hocvien MahvNavigation { get; set; } = null!;
+    public virtual Hocvien? MahvNavigation { get; set; } = null!;
 
-    public virtual Lophoc MalopNavigation { get; set; } = null!;
+    public virtual Lophoc? MalopNavigation { get; set; } = null!;
 
     public virtual ICollection<Phieudiemdanh> Phieudiemdanhs { get; set; } = new List<Phieudiemdanh>();
 }

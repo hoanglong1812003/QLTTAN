@@ -1,0 +1,65 @@
+﻿@model IEnumerable<DoAnCoSo.Data.Phieudiemdanh>
+
+@{
+    ViewData["Title"] = "Phiếu điểm danh";
+}
+
+<h1>Phiếu điểm danh</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Tạo mới</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Madd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Magv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Malh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Trangthai)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ghichu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mahv)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Madd)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Magv)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Malh)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Trangthai)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ghichu)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mahv)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Madd" class="btn btn-primary">Chỉnh sửa</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Madd" class="btn btn-danger">Xóa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

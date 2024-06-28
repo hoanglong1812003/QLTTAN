@@ -19,7 +19,7 @@ public partial class Bangluong
 
     public string? Ghichu { get; set; }
 
-    public virtual Giangvien MagvNavigation { get; set; } = null!;
+    public virtual Giangvien? MagvNavigation { get; set; } = null!;
 
-    public virtual Nhanvien ManvNavigation { get; set; } = null!;
+    public virtual Nhanvien? ManvNavigation { get; set; } = null!;
 }

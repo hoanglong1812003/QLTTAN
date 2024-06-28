@@ -19,7 +19,7 @@ public partial class Lichday
 
     public string? Ghichu { get; set; }
 
-    public virtual Giangvien MagvNavigation { get; set; } = null!;
+    public virtual Giangvien? MagvNavigation { get; set; } = null!;
 
-    public virtual Lophoc MalopNavigation { get; set; } = null!;
+    public virtual Lophoc? MalopNavigation { get; set; } = null!;
 }

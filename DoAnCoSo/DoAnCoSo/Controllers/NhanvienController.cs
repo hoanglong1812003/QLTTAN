@@ -47,12 +47,7 @@ namespace DoAnCoSo.Controllers
         // GET: Nhanvien/Create
         public IActionResult Create()
         {
-            var loaiuser = HttpContext.Session.GetString("Loaiuser");
-            if (loaiuser != "Admin")
-            {
-                ViewData["Message"] = "Bạn không có quyền thêm mới";
-                return View("AccessDenied");
-            }
+            
             ViewData["Username"] = new SelectList(_context.Taikhoans, "Username", "Username");
             return View();
         }
@@ -64,12 +59,7 @@ namespace DoAnCoSo.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Manv,Username,Tennv,Ngaysinh,Gioitinh,Diachi,Socccd,Sdt,Email,Chucvu")] Nhanvien nhanvien)
         {
-            var loaiuser = HttpContext.Session.GetString("Loaiuser");
-            if (loaiuser != "Admin")
-            {
-                ViewData["Message"] = "Bạn không có quyền thêm mới";
-                return View("AccessDenied");
-            }
+            
             if (ModelState.IsValid)
             {
                 _context.Add(nhanvien);
@@ -83,12 +73,7 @@ namespace DoAnCoSo.Controllers
         // GET: Nhanvien/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            var loaiuser = HttpContext.Session.GetString("Loaiuser");
-            if (loaiuser != "Admin")
-            {
-                ViewData["Message"] = "Bạn không có quyền chỉnh sửa";
-                return View("AccessDenied");
-            }
+            
             if (id == null)
             {
                 return NotFound();
@@ -110,12 +95,7 @@ namespace DoAnCoSo.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Manv,Username,Tennv,Ngaysinh,Gioitinh,Diachi,Socccd,Sdt,Email,Chucvu")] Nhanvien nhanvien)
         {
-            var loaiuser = HttpContext.Session.GetString("Loaiuser");
-            if (loaiuser != "Admin")
-            {
-                ViewData["Message"] = "Bạn không có quyền chỉnh sửa";
-                return View("AccessDenied");
-            }
+           
             if (id != nhanvien.Manv)
             {
                 return NotFound();
@@ -148,12 +128,7 @@ namespace DoAnCoSo.Controllers
         // GET: Nhanvien/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            var loaiuser = HttpContext.Session.GetString("Loaiuser");
-            if (loaiuser != "Admin")
-            {
-                ViewData["Message"] = "Bạn không có quyền xóa";
-                return View("AccessDenied");
-            }
+           
             if (id == null)
             {
                 return NotFound();
@@ -175,12 +150,7 @@ namespace DoAnCoSo.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var loaiuser = HttpContext.Session.GetString("Loaiuser");
-            if (loaiuser != "Admin")
-            {
-                ViewData["Message"] = "Bạn không có quyền xóa";
-                return View("AccessDenied");
-            }
+            
             var nhanvien = await _context.Nhanviens.FindAsync(id);
             if (nhanvien != null)
             {

@@ -17,7 +17,7 @@ public partial class Phieuthuhocphi
 
     public virtual ICollection<CtHocphi> CtHocphis { get; set; } = new List<CtHocphi>();
 
-    public virtual Hocvien MahvNavigation { get; set; } = null!;
+    public virtual Hocvien? MahvNavigation { get; set; } = null!;
 
-    public virtual Nhanvien ManvNavigation { get; set; } = null!;
+    public virtual Nhanvien? ManvNavigation { get; set; } = null!;
 }

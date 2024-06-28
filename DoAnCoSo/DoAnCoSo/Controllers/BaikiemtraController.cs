@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DoAnCoSo.Data;
-using System.Diagnostics;
 
 namespace DoAnCoSo.Controllers
 {
@@ -64,7 +65,7 @@ namespace DoAnCoSo.Controllers
         // POST: Baikiemtra/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Mabaikt,Magv,Mahv,Tenbaikt,Ngaykt,Tgbatdau,Tgketthuc,Ketqua,Danhgia")] Baikiemtra baikiemtra)
+        public async Task<IActionResult> Create([Bind("Mabaikt,Magv,Mahv,Tenbaikt,Ngaykt,Tgbatdau,Tgketthuc,Ketqua,Danhgia")] Baikiemtra baikiemtra, IFormFile file)
         {
             var loaiuser = HttpContext.Session.GetString("Loaiuser");
             if (loaiuser != "Admin")
@@ -75,6 +76,19 @@ namespace DoAnCoSo.Controllers
 
             if (ModelState.IsValid)
             {
+                // Handle file upload
+                if (file != null && file.Length > 0)
+                {
+                    var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads", file.FileName);
+
+                    using (var stream = new FileStream(path, FileMode.Create))
+                    {
+                        await file.CopyToAsync(stream);
+                    }
+
+                    baikiemtra.FilePath = "/uploads/" + file.FileName;
+                }
+
                 _context.Add(baikiemtra);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -120,11 +134,9 @@ namespace DoAnCoSo.Controllers
         }
 
         // POST: Baikiemtra/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Mabaikt,Magv,Mahv,Tenbaikt,Ngaykt,Tgbatdau,Tgketthuc,Ketqua,Danhgia")] Baikiemtra baikiemtra)
+        public async Task<IActionResult> Edit(int id, [Bind("Mabaikt,Magv,Mahv,Tenbaikt,Ngaykt,Tgbatdau,Tgketthuc,Ketqua,Danhgia,FilePath")] Baikiemtra baikiemtra, IFormFile file)
         {
             var loaiuser = HttpContext.Session.GetString("Loaiuser");
             if (loaiuser != "Admin")
@@ -141,6 +153,16 @@ namespace DoAnCoSo.Controllers
             {
                 try
                 {
+                    if (file != null && file.Length > 0)
+                    {
+                        var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads", file.FileName);
+                        using (var stream = new FileStream(path, FileMode.Create))
+                        {
+                            await file.CopyToAsync(stream);
+                        }
+                        baikiemtra.FilePath = "/uploads/" + file.FileName;
+                    }
+
                     _context.Update(baikiemtra);
                     await _context.SaveChangesAsync();
                 }
@@ -209,10 +231,6 @@ namespace DoAnCoSo.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool BaikiemtraExists(int id)
-        {
-            return _context.Baikiemtras.Any(e => e.Mabaikt == id);
-        }
         [HttpPost]
         public async Task<IActionResult> UploadWordFile(int id, IFormFile file)
         {
@@ -224,7 +242,7 @@ namespace DoAnCoSo.Controllers
             }
             if (file == null || file.Length == 0)
             {
-                return Content("file not selected");
+                return Content("File not selected");
             }
 
             var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads", file.FileName);
@@ -245,6 +263,11 @@ namespace DoAnCoSo.Controllers
             await _context.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));
+        }
+
+        private bool BaikiemtraExists(int id)
+        {
+            return _context.Baikiemtras.Any(e => e.Mabaikt == id);
         }
     }
 }

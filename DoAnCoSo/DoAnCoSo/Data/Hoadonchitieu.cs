@@ -13,7 +13,7 @@ public partial class Hoadonchitieu
 
     public decimal? Sotien { get; set; }
 
-    public virtual Nhanvien ManvNavigation { get; set; } = null!;
+    public virtual Nhanvien? ManvNavigation { get; set; } = null!;
 
     public virtual ICollection<Phieulatdat> Phieulatdats { get; set; } = new List<Phieulatdat>();
 }

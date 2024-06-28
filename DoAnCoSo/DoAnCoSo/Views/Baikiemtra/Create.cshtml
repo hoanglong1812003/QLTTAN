@@ -1,59 +1,77 @@
 ﻿@model DoAnCoSo.Data.Baikiemtra
 
 @{
-    ViewData["Title"] = "Create Baikiemtra";
+    ViewData["Title"] = "Tạo bài kiểm tra";
 }
 
 <h1>Create Baikiemtra</h1>
-
-
 
 <h4>Baikiemtra</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Mabaikt" class="control-label"></label>
+                <input asp-for="Mabaikt" class="form-control" />
+                <span asp-validation-for="Mabaikt" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Magv" class="control-label"></label>
+                <input asp-for="Magv" class="form-control" />
+                <span asp-validation-for="Magv" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Mahv" class="control-label"></label>
+                <input asp-for="Mahv" class="form-control" />
+                <span asp-validation-for="Mahv" class="text-danger"></span>
+            </div>
+
             <div class="form-group">
                 <label asp-for="Tenbaikt" class="control-label"></label>
                 <input asp-for="Tenbaikt" class="form-control" />
                 <span asp-validation-for="Tenbaikt" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="Ngaykt" class="control-label"></label>
-                <input asp-for="Ngaykt" class="form-control" />
+                <input asp-for="Ngaykt" class="form-control" type="datetime-local" />
                 <span asp-validation-for="Ngaykt" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="Tgbatdau" class="control-label"></label>
-                <input asp-for="Tgbatdau" class="form-control" />
+                <input asp-for="Tgbatdau" class="form-control" type="datetime-local" />
                 <span asp-validation-for="Tgbatdau" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="Tgketthuc" class="control-label"></label>
-                <input asp-for="Tgketthuc" class="form-control" />
+                <input asp-for="Tgketthuc" class="form-control" type="datetime-local" />
                 <span asp-validation-for="Tgketthuc" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="Ketqua" class="control-label"></label>
                 <input asp-for="Ketqua" class="form-control" />
                 <span asp-validation-for="Ketqua" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="Danhgia" class="control-label"></label>
                 <input asp-for="Danhgia" class="form-control" />
                 <span asp-validation-for="Danhgia" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="Magv" class="control-label"></label>
-                <select asp-for="Magv" class="form-control" asp-items="ViewBag.Magv"></select>
-                <span asp-validation-for="Magv" class="text-danger"></span>
+                <label for="file" class="control-label">Upload Word File</label>
+                <input type="file" name="file" class="form-control" />
             </div>
-            <div class="form-group">
-                <label asp-for="Mahv" class="control-label"></label>
-                <select asp-for="Mahv" class="form-control" asp-items="ViewBag.Mahv"></select>
-                <span asp-validation-for="Mahv" class="text-danger"></span>
-            </div>
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

@@ -13,7 +13,7 @@ public partial class CtLapdat
 
     public string? Ghichu { get; set; }
 
-    public virtual Thietbi MatbNavigation { get; set; } = null!;
+    public virtual Thietbi? MatbNavigation { get; set; } = null!;
 
-    public virtual Phieulatdat SophieuNavigation { get; set; } = null!;
+    public virtual Phieulatdat? SophieuNavigation { get; set; } = null!;
 }

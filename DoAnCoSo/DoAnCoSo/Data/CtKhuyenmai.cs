@@ -13,7 +13,7 @@ public partial class CtKhuyenmai
 
     public DateTime? Ngayketthuc { get; set; }
 
-    public virtual Khoahoc MakhNavigation { get; set; } = null!;
+    public virtual Khoahoc? MakhNavigation { get; set; } = null!;
 
-    public virtual Khuyenmai MakmNavigation { get; set; } = null!;
+    public virtual Khuyenmai? MakmNavigation { get; set; } = null!;
 }
