@@ -21,6 +21,7 @@
                 <th>@Html.DisplayNameFor(model => model.Danhgia)</th>
                 <th>@Html.DisplayNameFor(model => model.MagvNavigation)</th>
                 <th>@Html.DisplayNameFor(model => model.MahvNavigation)</th>
+                <th>File</th> <!-- Add this column for file actions -->
                 <th>Actions</th>
             </tr>
         </thead>
@@ -35,6 +36,18 @@
                     <td>@Html.DisplayFor(modelItem => item.Danhgia)</td>
                     <td>@Html.DisplayFor(modelItem => item.MagvNavigation.Magv)</td>
                     <td>@Html.DisplayFor(modelItem => item.MahvNavigation.Mahv)</td>
+                    <td>
+                        <!-- Upload file form -->
+                        <form asp-action="UploadWordFile" method="post" enctype="multipart/form-data" style="display:inline;">
+                            <input type="file" name="file" style="display:inline-block;" />
+                            <input type="hidden" name="id" value="@item.Mabt" />
+                            <button type="submit" class="btn btn-sm btn-primary">Upload</button>
+                        </form>
+                        @if (!string.IsNullOrEmpty(item.FilePath))
+                        {
+                            <a href="@item.FilePath" class="btn btn-sm btn-success" download>Download</a>
+                        }
+                    </td>
                     <td>
                         <a class="btn btn-sm btn-info" asp-action="Edit" asp-route-id="@item.Mabt">Chỉnh sửa</a>
                         <a class="btn btn-sm btn-secondary" asp-action="Details" asp-route-id="@item.Mabt">Chi tiết</a>

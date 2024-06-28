@@ -45,6 +45,12 @@ namespace DoAnCoSo.Controllers
         // GET: Thietbi/Create
         public IActionResult Create()
         {
+            var loaiuser = HttpContext.Session.GetString("Loaiuser");
+            if (loaiuser != "Admin")
+            {
+                ViewData["Message"] = "Bạn không có quyền thêm mới";
+                return View("AccessDenied");
+            }
             return View();
         }
 
@@ -55,6 +61,12 @@ namespace DoAnCoSo.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Matb,Tentb,Giatien,Dvt")] Thietbi thietbi)
         {
+            var loaiuser = HttpContext.Session.GetString("Loaiuser");
+            if (loaiuser != "Admin")
+            {
+                ViewData["Message"] = "Bạn không có quyền thêm mới";
+                return View("AccessDenied");
+            }
             if (ModelState.IsValid)
             {
                 _context.Add(thietbi);
@@ -67,6 +79,12 @@ namespace DoAnCoSo.Controllers
         // GET: Thietbi/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            var loaiuser = HttpContext.Session.GetString("Loaiuser");
+            if (loaiuser != "Admin")
+            {
+                ViewData["Message"] = "Bạn không có quyền chỉnh sửa";
+                return View("AccessDenied");
+            }
             if (id == null)
             {
                 return NotFound();
@@ -87,6 +105,12 @@ namespace DoAnCoSo.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Matb,Tentb,Giatien,Dvt")] Thietbi thietbi)
         {
+            var loaiuser = HttpContext.Session.GetString("Loaiuser");
+            if (loaiuser != "Admin")
+            {
+                ViewData["Message"] = "Bạn không có quyền chỉnh sửa";
+                return View("AccessDenied");
+            }
             if (id != thietbi.Matb)
             {
                 return NotFound();
@@ -118,6 +142,12 @@ namespace DoAnCoSo.Controllers
         // GET: Thietbi/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            var loaiuser = HttpContext.Session.GetString("Loaiuser");
+            if (loaiuser != "Admin")
+            {
+                ViewData["Message"] = "Bạn không có quyền xóa";
+                return View("AccessDenied");
+            }
             if (id == null)
             {
                 return NotFound();
@@ -138,6 +168,12 @@ namespace DoAnCoSo.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            var loaiuser = HttpContext.Session.GetString("Loaiuser");
+            if (loaiuser != "Admin")
+            {
+                ViewData["Message"] = "Bạn không có quyền xóa";
+                return View("AccessDenied");
+            }
             var thietbi = await _context.Thietbis.FindAsync(id);
             if (thietbi != null)
             {

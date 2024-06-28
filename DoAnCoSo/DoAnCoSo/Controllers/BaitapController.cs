@@ -48,6 +48,12 @@ namespace DoAnCoSo.Controllers
         // GET: Baitap/Create
         public IActionResult Create()
         {
+            var loaiuser = HttpContext.Session.GetString("Loaiuser");
+            if (loaiuser != "Admin")
+            {
+                ViewData["Message"] = "Bạn không có quyền thêm mới";
+                return View("AccessDenied");
+            }
             ViewData["Magv"] = new SelectList(_context.Giangviens, "Magv", "Magv");
             ViewData["Mahv"] = new SelectList(_context.Hocviens, "Mahv", "Mahv");
             return View();
@@ -60,6 +66,12 @@ namespace DoAnCoSo.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Mabt,Magv,Mahv,Tenbt,Tgbatdau,Tgketthuc,Ketqua,Danhgia")] Baitap baitap)
         {
+            var loaiuser = HttpContext.Session.GetString("Loaiuser");
+            if (loaiuser != "Admin")
+            {
+                ViewData["Message"] = "Bạn không có quyền thêm mới";
+                return View("AccessDenied");
+            }
             if (ModelState.IsValid)
             {
                 _context.Add(baitap);
@@ -74,6 +86,12 @@ namespace DoAnCoSo.Controllers
         // GET: Baitap/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            var loaiuser = HttpContext.Session.GetString("Loaiuser");
+            if (loaiuser != "Admin")
+            {
+                ViewData["Message"] = "Bạn không có quyền chỉnh sửa";
+                return View("AccessDenied");
+            }
             if (id == null)
             {
                 return NotFound();
@@ -96,6 +114,12 @@ namespace DoAnCoSo.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Mabt,Magv,Mahv,Tenbt,Tgbatdau,Tgketthuc,Ketqua,Danhgia")] Baitap baitap)
         {
+            var loaiuser = HttpContext.Session.GetString("Loaiuser");
+            if (loaiuser != "Admin")
+            {
+                ViewData["Message"] = "Bạn không có quyền chỉnh sửa";
+                return View("AccessDenied");
+            }
             if (id != baitap.Mabt)
             {
                 return NotFound();
@@ -129,6 +153,12 @@ namespace DoAnCoSo.Controllers
         // GET: Baitap/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            var loaiuser = HttpContext.Session.GetString("Loaiuser");
+            if (loaiuser != "Admin")
+            {
+                ViewData["Message"] = "Bạn không có quyền xóa";
+                return View("AccessDenied");
+            }
             if (id == null)
             {
                 return NotFound();
@@ -151,6 +181,12 @@ namespace DoAnCoSo.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            var loaiuser = HttpContext.Session.GetString("Loaiuser");
+            if (loaiuser != "Admin")
+            {
+                ViewData["Message"] = "Bạn không có quyền xóa";
+                return View("AccessDenied");
+            }
             var baitap = await _context.Baitaps.FindAsync(id);
             if (baitap != null)
             {
@@ -165,5 +201,39 @@ namespace DoAnCoSo.Controllers
         {
             return _context.Baitaps.Any(e => e.Mabt == id);
         }
+        [HttpPost]
+        public async Task<IActionResult> UploadWordFile(int id, IFormFile file)
+        {
+            var loaiuser = HttpContext.Session.GetString("Loaiuser");
+            if (loaiuser != "Admin")
+            {
+                ViewData["Message"] = "Bạn không có quyền thêm file";
+                return View("AccessDenied");
+            }
+            if (file == null || file.Length == 0)
+            {
+                return Content("file not selected");
+            }
+
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads", file.FileName);
+
+            using (var stream = new FileStream(path, FileMode.Create))
+            {
+                await file.CopyToAsync(stream);
+            }
+
+            var baikiemtra = await _context.Baikiemtras.FindAsync(id);
+            if (baikiemtra == null)
+            {
+                return NotFound();
+            }
+
+            baikiemtra.FilePath = "/uploads/" + file.FileName;
+            _context.Update(baikiemtra);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
+
     }
 }

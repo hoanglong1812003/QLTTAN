@@ -48,6 +48,12 @@ namespace DoAnCoSo.Controllers
         // GET: Lichhoc/Create
         public IActionResult Create()
         {
+            var loaiuser = HttpContext.Session.GetString("Loaiuser");
+            if (loaiuser != "Admin")
+            {
+                ViewData["Message"] = "Bạn không có quyền thêm mới";
+                return View("AccessDenied");
+            }
             ViewData["Mahv"] = new SelectList(_context.Hocviens, "Mahv", "Mahv");
             ViewData["Malop"] = new SelectList(_context.Lophocs, "Malop", "Malop");
             return View();
@@ -60,6 +66,12 @@ namespace DoAnCoSo.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Malh,Mahv,Malop,Tuan,Cahoc,Ngayhoc,Ghichu")] Lichhoc lichhoc)
         {
+            var loaiuser = HttpContext.Session.GetString("Loaiuser");
+            if (loaiuser != "Admin")
+            {
+                ViewData["Message"] = "Bạn không có quyền thêm mới";
+                return View("AccessDenied");
+            }
             if (ModelState.IsValid)
             {
                 _context.Add(lichhoc);
@@ -74,6 +86,12 @@ namespace DoAnCoSo.Controllers
         // GET: Lichhoc/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            var loaiuser = HttpContext.Session.GetString("Loaiuser");
+            if (loaiuser != "Admin")
+            {
+                ViewData["Message"] = "Bạn không có quyền chỉnh sửa";
+                return View("AccessDenied");
+            }
             if (id == null)
             {
                 return NotFound();
@@ -96,6 +114,12 @@ namespace DoAnCoSo.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Malh,Mahv,Malop,Tuan,Cahoc,Ngayhoc,Ghichu")] Lichhoc lichhoc)
         {
+            var loaiuser = HttpContext.Session.GetString("Loaiuser");
+            if (loaiuser != "Admin")
+            {
+                ViewData["Message"] = "Bạn không có quyền chỉnh sửa";
+                return View("AccessDenied");
+            }
             if (id != lichhoc.Malh)
             {
                 return NotFound();
@@ -129,6 +153,12 @@ namespace DoAnCoSo.Controllers
         // GET: Lichhoc/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            var loaiuser = HttpContext.Session.GetString("Loaiuser");
+            if (loaiuser != "Admin")
+            {
+                ViewData["Message"] = "Bạn không có quyền xóa";
+                return View("AccessDenied");
+            }
             if (id == null)
             {
                 return NotFound();
@@ -151,6 +181,12 @@ namespace DoAnCoSo.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            var loaiuser = HttpContext.Session.GetString("Loaiuser");
+            if (loaiuser != "Admin")
+            {
+                ViewData["Message"] = "Bạn không có quyền xóa";
+                return View("AccessDenied");
+            }
             var lichhoc = await _context.Lichhocs.FindAsync(id);
             if (lichhoc != null)
             {

@@ -48,6 +48,12 @@ namespace DoAnCoSo.Controllers
         // GET: Lichday/Create
         public IActionResult Create()
         {
+            var loaiuser = HttpContext.Session.GetString("Loaiuser");
+            if (loaiuser != "Admin")
+            {
+                ViewData["Message"] = "Bạn không có quyền thêm mới";
+                return View("AccessDenied");
+            }
             ViewData["Magv"] = new SelectList(_context.Giangviens, "Magv", "Magv");
             ViewData["Malop"] = new SelectList(_context.Lophocs, "Malop", "Malop");
             return View();
@@ -60,6 +66,12 @@ namespace DoAnCoSo.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Mald,Malop,Magv,Tuan,Caday,Ngayday,Ghichu")] Lichday lichday)
         {
+            var loaiuser = HttpContext.Session.GetString("Loaiuser");
+            if (loaiuser != "Admin")
+            {
+                ViewData["Message"] = "Bạn không có quyền thêm mới";
+                return View("AccessDenied");
+            }
             if (ModelState.IsValid)
             {
                 _context.Add(lichday);
@@ -74,6 +86,12 @@ namespace DoAnCoSo.Controllers
         // GET: Lichday/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            var loaiuser = HttpContext.Session.GetString("Loaiuser");
+            if (loaiuser != "Admin")
+            {
+                ViewData["Message"] = "Bạn không có quyền chỉnh sửa";
+                return View("AccessDenied");
+            }
             if (id == null)
             {
                 return NotFound();
@@ -96,6 +114,12 @@ namespace DoAnCoSo.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Mald,Malop,Magv,Tuan,Caday,Ngayday,Ghichu")] Lichday lichday)
         {
+            var loaiuser = HttpContext.Session.GetString("Loaiuser");
+            if (loaiuser != "Admin")
+            {
+                ViewData["Message"] = "Bạn không có quyền chỉnh sửa";
+                return View("AccessDenied");
+            }
             if (id != lichday.Mald)
             {
                 return NotFound();
@@ -129,6 +153,12 @@ namespace DoAnCoSo.Controllers
         // GET: Lichday/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            var loaiuser = HttpContext.Session.GetString("Loaiuser");
+            if (loaiuser != "Admin")
+            {
+                ViewData["Message"] = "Bạn không có quyền xóa";
+                return View("AccessDenied");
+            }
             if (id == null)
             {
                 return NotFound();
@@ -151,6 +181,12 @@ namespace DoAnCoSo.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            var loaiuser = HttpContext.Session.GetString("Loaiuser");
+            if (loaiuser != "Admin")
+            {
+                ViewData["Message"] = "Bạn không có quyền xóa";
+                return View("AccessDenied");
+            }
             var lichday = await _context.Lichdays.FindAsync(id);
             if (lichday != null)
             {

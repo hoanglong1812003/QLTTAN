@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DoAnCoSo.Data;
+using System.Diagnostics;
 
 namespace DoAnCoSo.Controllers
 {
@@ -48,23 +49,46 @@ namespace DoAnCoSo.Controllers
         // GET: Baikiemtra/Create
         public IActionResult Create()
         {
+            var loaiuser = HttpContext.Session.GetString("Loaiuser");
+            if (loaiuser != "Admin")
+            {
+                ViewData["Message"] = "Bạn không có quyền thêm mới";
+                return View("AccessDenied");
+            }
+
             ViewData["Magv"] = new SelectList(_context.Giangviens, "Magv", "Magv");
             ViewData["Mahv"] = new SelectList(_context.Hocviens, "Mahv", "Mahv");
             return View();
         }
 
         // POST: Baikiemtra/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Mabaikt,Magv,Mahv,Tenbaikt,Ngaykt,Tgbatdau,Tgketthuc,Ketqua,Danhgia")] Baikiemtra baikiemtra)
         {
+            var loaiuser = HttpContext.Session.GetString("Loaiuser");
+            if (loaiuser != "Admin")
+            {
+                ViewData["Message"] = "Bạn không có quyền thêm mới";
+                return View("AccessDenied");
+            }
+
             if (ModelState.IsValid)
             {
                 _context.Add(baikiemtra);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                // Log ModelState errors for debugging
+                foreach (var modelState in ModelState.Values)
+                {
+                    foreach (var error in modelState.Errors)
+                    {
+                        Console.WriteLine(error.ErrorMessage);
+                    }
+                }
             }
             ViewData["Magv"] = new SelectList(_context.Giangviens, "Magv", "Magv", baikiemtra.Magv);
             ViewData["Mahv"] = new SelectList(_context.Hocviens, "Mahv", "Mahv", baikiemtra.Mahv);
@@ -74,6 +98,12 @@ namespace DoAnCoSo.Controllers
         // GET: Baikiemtra/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            var loaiuser = HttpContext.Session.GetString("Loaiuser");
+            if (loaiuser != "Admin")
+            {
+                ViewData["Message"] = "Bạn không có quyền chỉnh sửa";
+                return View("AccessDenied");
+            }
             if (id == null)
             {
                 return NotFound();
@@ -96,6 +126,12 @@ namespace DoAnCoSo.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Mabaikt,Magv,Mahv,Tenbaikt,Ngaykt,Tgbatdau,Tgketthuc,Ketqua,Danhgia")] Baikiemtra baikiemtra)
         {
+            var loaiuser = HttpContext.Session.GetString("Loaiuser");
+            if (loaiuser != "Admin")
+            {
+                ViewData["Message"] = "Bạn không có quyền chỉnh sửa";
+                return View("AccessDenied");
+            }
             if (id != baikiemtra.Mabaikt)
             {
                 return NotFound();
@@ -129,6 +165,12 @@ namespace DoAnCoSo.Controllers
         // GET: Baikiemtra/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            var loaiuser = HttpContext.Session.GetString("Loaiuser");
+            if (loaiuser != "Admin")
+            {
+                ViewData["Message"] = "Bạn không có quyền xóa";
+                return View("AccessDenied");
+            }
             if (id == null)
             {
                 return NotFound();
@@ -151,6 +193,12 @@ namespace DoAnCoSo.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            var loaiuser = HttpContext.Session.GetString("Loaiuser");
+            if (loaiuser != "Admin")
+            {
+                ViewData["Message"] = "Bạn không có quyền xóa";
+                return View("AccessDenied");
+            }
             var baikiemtra = await _context.Baikiemtras.FindAsync(id);
             if (baikiemtra != null)
             {
@@ -164,6 +212,39 @@ namespace DoAnCoSo.Controllers
         private bool BaikiemtraExists(int id)
         {
             return _context.Baikiemtras.Any(e => e.Mabaikt == id);
+        }
+        [HttpPost]
+        public async Task<IActionResult> UploadWordFile(int id, IFormFile file)
+        {
+            var loaiuser = HttpContext.Session.GetString("Loaiuser");
+            if (loaiuser != "Admin")
+            {
+                ViewData["Message"] = "Bạn không có quyền thêm file";
+                return View("AccessDenied");
+            }
+            if (file == null || file.Length == 0)
+            {
+                return Content("file not selected");
+            }
+
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads", file.FileName);
+
+            using (var stream = new FileStream(path, FileMode.Create))
+            {
+                await file.CopyToAsync(stream);
+            }
+
+            var baikiemtra = await _context.Baikiemtras.FindAsync(id);
+            if (baikiemtra == null)
+            {
+                return NotFound();
+            }
+
+            baikiemtra.FilePath = "/uploads/" + file.FileName;
+            _context.Update(baikiemtra);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
         }
     }
 }

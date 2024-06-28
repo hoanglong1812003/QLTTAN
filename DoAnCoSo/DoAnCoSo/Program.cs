@@ -45,4 +45,3 @@ app.MapControllerRoute(
     pattern: "{controller=Taikhoan}/{action=Login}/{id?}");
 
 app.Run();
-
