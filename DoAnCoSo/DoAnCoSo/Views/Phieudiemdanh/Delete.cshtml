@@ -50,8 +50,7 @@
         </dd>
     </dl>
 
-    <form asp-action="DeleteConfirmed">
-        <input type="hidden" asp-for="Madd" />
+    <form asp-action="DeleteConfirmed" asp-route-id="@Model.Madd" method="post">
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-action="Index" class="btn btn-secondary">Cancel</a>
     </form>

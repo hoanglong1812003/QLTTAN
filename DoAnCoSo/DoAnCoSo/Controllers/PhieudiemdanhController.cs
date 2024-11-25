@@ -177,10 +177,15 @@ namespace DoAnCoSo.Controllers
                 return View("AccessDenied");
             }
             var phieudiemdanh = await _context.Phieudiemdanhs.FindAsync(id);
+            if (phieudiemdanh == null)
+            {
+                return NotFound();
+            }
             _context.Phieudiemdanhs.Remove(phieudiemdanh);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+
 
         private bool PhieudiemdanhExists(int id)
         {

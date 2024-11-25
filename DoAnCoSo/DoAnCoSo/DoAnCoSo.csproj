@@ -7,7 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\NewFolder\**" />
+    <Content Remove="wwwroot\NewFolder\**" />
+    <EmbeddedResource Remove="wwwroot\NewFolder\**" />
+    <None Remove="wwwroot\NewFolder\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Data\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\vendor\bootstrap\css\Taikhoanstyles.css" />
   </ItemGroup>
 
   <ItemGroup>

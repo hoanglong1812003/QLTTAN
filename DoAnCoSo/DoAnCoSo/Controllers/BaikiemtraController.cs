@@ -51,7 +51,7 @@ namespace DoAnCoSo.Controllers
         public IActionResult Create()
         {
             var loaiuser = HttpContext.Session.GetString("Loaiuser");
-            if (loaiuser != "Admin")
+            if (loaiuser != "Admin" && loaiuser != "Giangvien" && loaiuser != "Giảng viên")
             {
                 ViewData["Message"] = "Bạn không có quyền thêm mới";
                 return View("AccessDenied");
@@ -68,7 +68,7 @@ namespace DoAnCoSo.Controllers
         public async Task<IActionResult> Create([Bind("Mabaikt,Magv,Mahv,Tenbaikt,Ngaykt,Tgbatdau,Tgketthuc,Ketqua,Danhgia")] Baikiemtra baikiemtra, IFormFile file)
         {
             var loaiuser = HttpContext.Session.GetString("Loaiuser");
-            if (loaiuser != "Admin")
+            if (loaiuser != "Admin" && loaiuser != "Giangvien" && loaiuser != "Giảng viên")
             {
                 ViewData["Message"] = "Bạn không có quyền thêm mới";
                 return View("AccessDenied");
@@ -113,7 +113,7 @@ namespace DoAnCoSo.Controllers
         public async Task<IActionResult> Edit(int? id)
         {
             var loaiuser = HttpContext.Session.GetString("Loaiuser");
-            if (loaiuser != "Admin")
+            if (loaiuser != "Admin" && loaiuser != "Giangvien" && loaiuser != "Giảng viên")
             {
                 ViewData["Message"] = "Bạn không có quyền chỉnh sửa";
                 return View("AccessDenied");
@@ -139,7 +139,7 @@ namespace DoAnCoSo.Controllers
         public async Task<IActionResult> Edit(int id, [Bind("Mabaikt,Magv,Mahv,Tenbaikt,Ngaykt,Tgbatdau,Tgketthuc,Ketqua,Danhgia,FilePath")] Baikiemtra baikiemtra, IFormFile file)
         {
             var loaiuser = HttpContext.Session.GetString("Loaiuser");
-            if (loaiuser != "Admin")
+            if (loaiuser != "Admin" && loaiuser != "Giangvien" && loaiuser != "Giảng viên")
             {
                 ViewData["Message"] = "Bạn không có quyền chỉnh sửa";
                 return View("AccessDenied");
@@ -155,8 +155,14 @@ namespace DoAnCoSo.Controllers
                 {
                     if (file != null && file.Length > 0)
                     {
-                        var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads", file.FileName);
-                        using (var stream = new FileStream(path, FileMode.Create))
+                        var uploads = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads");
+                        if (!Directory.Exists(uploads))
+                        {
+                            Directory.CreateDirectory(uploads);
+                        }
+
+                        var filePath = Path.Combine(uploads, file.FileName);
+                        using (var stream = new FileStream(filePath, FileMode.Create))
                         {
                             await file.CopyToAsync(stream);
                         }
@@ -179,6 +185,7 @@ namespace DoAnCoSo.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+
             ViewData["Magv"] = new SelectList(_context.Giangviens, "Magv", "Magv", baikiemtra.Magv);
             ViewData["Mahv"] = new SelectList(_context.Hocviens, "Mahv", "Mahv", baikiemtra.Mahv);
             return View(baikiemtra);
@@ -188,7 +195,7 @@ namespace DoAnCoSo.Controllers
         public async Task<IActionResult> Delete(int? id)
         {
             var loaiuser = HttpContext.Session.GetString("Loaiuser");
-            if (loaiuser != "Admin")
+            if (loaiuser != "Admin" && loaiuser != "Giangvien" && loaiuser != "Giảng viên")
             {
                 ViewData["Message"] = "Bạn không có quyền xóa";
                 return View("AccessDenied");
@@ -216,7 +223,7 @@ namespace DoAnCoSo.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var loaiuser = HttpContext.Session.GetString("Loaiuser");
-            if (loaiuser != "Admin")
+            if (loaiuser != "Admin" && loaiuser != "Giangvien" && loaiuser != "Giảng viên")
             {
                 ViewData["Message"] = "Bạn không có quyền xóa";
                 return View("AccessDenied");
@@ -234,12 +241,7 @@ namespace DoAnCoSo.Controllers
         [HttpPost]
         public async Task<IActionResult> UploadWordFile(int id, IFormFile file)
         {
-            var loaiuser = HttpContext.Session.GetString("Loaiuser");
-            if (loaiuser != "Admin")
-            {
-                ViewData["Message"] = "Bạn không có quyền thêm file";
-                return View("AccessDenied");
-            }
+            
             if (file == null || file.Length == 0)
             {
                 return Content("File not selected");

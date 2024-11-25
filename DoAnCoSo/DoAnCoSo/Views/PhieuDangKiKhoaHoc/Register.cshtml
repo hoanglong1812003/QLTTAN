@@ -3,30 +3,599 @@
 @{
     ViewData["Title"] = "Đăng ký khóa học";
 }
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <header>
+        <h1>Mục Lục Khóa Học</h1>
+    </header>
+    <nav class="course-menu">
+        <ul>
+            <li><a href="#basic-english">Tiếng Anh Cơ Bản</a></li>
+            <li><a href="#conversational-english">Tiếng Anh Giao Tiếp</a></li>
+            <li><a href="#business-english">Tiếng Anh Thương Mại</a></li>
+            <li><a href="#travel-english">Tiếng Anh Du Lịch</a></li>
+            <li><a href="#toeic-prep">Luyện Thi TOEIC</a></li>
+            <li><a href="#ielts-prep">Luyện Thi IELTS</a></li>
+            <li><a href="#academic-english">Tiếng Anh Học Thuật</a></li>
+            <li><a href="#kids-english">Tiếng Anh Thiếu Nhi</a></li>
+            <li><a href="#it-english">Tiếng Anh Chuyên Ngành IT</a></li>
+            <li><a href="#pronunciation">Tiếng Anh Phát Âm</a></li>
+        </ul>
+    </nav>
+   <style>
+        .course-menu {
+            background: #e8e8f2;
+            padding: 15px;
+        }
 
-<h1>Register</h1>
+            .course-menu ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+                .course-menu ul li {
+                    margin: 5px;
+                }
+
+                    .course-menu ul li a {
+                        text-decoration: none;
+                        color: #0033cc;
+                        font-weight: bold;
+                        padding: 10px 15px;
+                        border: 1px solid #0033cc;
+                        border-radius: 5px;
+                        transition: background-color 0.3s ease, color 0.3s ease;
+                    }
+
+                        .course-menu ul li a:hover {
+                            background-color: #0033cc;
+                            color: white;
+                        }
+
+   </style>
+</body>
+</html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .header {
+            background-color: #0033cc;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+            .header h1 {
+                margin: 0;
+                font-size: 36px;
+            }
+
+        .container {
+            padding: 20px;
+        }
+
+        .section-title {
+            background-color: #0033cc;
+            color: white;
+            display: inline-block;
+            padding: 10px 20px;
+            margin-bottom: 20px;
+            font-size: 18px;
+            border-radius: 4px;
+        }
+
+        .content {
+            margin-bottom: 30px;
+        }
+
+            .content ul {
+                padding-left: 20px;
+            }
+
+                .content ul li {
+                    margin-bottom: 10px;
+                }
+
+        .image-container {
+            text-align: center;
+        }
+
+            .image-container img {
+                width: 80%;
+                max-width: 400px;
+                border-radius: 8px;
+                margin-top: 20px;
+            }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>REVIEW VỀ CÁC KHOÁ HỌC</h1>
+    </div>
+   <!--Tiếng Anh Cơ Bản-->
+    <section id="basic-english">
+    <div class="container">
+        <div class="section-title">Tiếng Anh Cơ Bản</div>
+        <div class="content">
+            <p>
+                Khóa học Tiếng Anh Cơ Bản được thiết kế dành cho những người mới bắt đầu hoặc mất gốc, 
+                giúp học viên xây dựng nền tảng ngôn ngữ vững chắc.
+            </p>
+            <ul>
+                <li>
+                    Từ việc học từ vựng, ngữ pháp cơ bản đến phát âm chuẩn, 
+                    khóa học này giúp bạn tự tin bước đầu làm quen và sử dụng tiếng Anh trong cuộc sống hàng ngày.
+                </li>
+                <li>
+                    Các bài học được thiết kế sinh động và dễ hiểu, phù hợp với mọi lứa tuổi.
+                </li>
+                <li>
+
+                </li>
+            </ul>
+        </div>
+        <div class="image-container">
+            <img src="~/images/zenlish1.jpg" alt="Zenlish">
+        </div>
+    </div>
+    </section>
+</body>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+         
+        .custom-background {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #0033cc;
+            color: white;
+        }
+
+            .custom-background .section-title1 {
+                background-color: white;
+                color: #0033cc;
+                display: inline-block;
+                padding: 10px 20px;
+                font-size: 18px;
+                font-weight: bold;
+                border-radius: 4px;
+            }
+
+            .custom-background ul li {
+                color: white;
+            }
+
+                .custom-background ul li strong {
+                    color: #ffcc00; 
+                }
+
+
+        .container1 {
+            padding: 40px 20px;
+        }
+
+        container {
+            padding: 40px 20px;
+        }
+        .section-title1 {
+            background-color: white;
+            color: #0033cc;
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+
+        .content1 {
+            margin-top: 20px;
+            display: flex;
+            align-items: flex-start; 
+            gap: 20px; 
+        }
+
+            .content1 img {
+                width: 40%; 
+                max-width: 400px;
+                border-radius: 10px;
+            }
+
+            .content1 ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                line-height: 1.8;
+            }
+
+                .content1 ul li {
+                    position: relative; 
+                    padding-left: 25px;
+                    margin-bottom: 15px;
+                }
+
+                    .content1 ul li::before {
+                        content: "•";
+                        position: absolute;
+                        left: 0;
+                        color: #0033cc; 
+                        font-size: 20px;
+                        line-height: 1.2;
+                    }
+
+
+        .social-icons {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+            .social-icons a {
+                width: 50px;
+                height: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                background-color: white;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            }
+
+            .social-icons img {
+                width: 60%;
+                height: auto;
+            }
+
+        /* Chuyển nút scroll up */
+        .scroll-up {
+            position: fixed;
+            bottom: 20px;
+            left: 20px; /* Chuyển sang trái */
+            width: 40px;
+            height: 40px;
+            background-color: #0033cc; /* Nút xanh */
+            color: white; /* Chữ trắng */
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            cursor: pointer;
+            font-size: 20px;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+            .scroll-up:hover {
+                background-color: #0056e0;
+            }
+    </style>
+</head>
+<body>
+    <section id="conversational-english">
+    <div class="container1 custom-background">
+        <div class="section-title1">Tiếng Anh Giao Tiếp</div>
+        <div class="content1">
+            <img src="~/images/classroom1.jpg" alt="Lớp học">
+            <ul>
+                <li>Tiếng Anh Giao Tiếp tập trung vào việc phát triển khả năng nghe và nói, giúp học viên tự tin giao tiếp trong các tình huống thường ngày.</li>
+                <li>Khóa học sử dụng các phương pháp thực hành tương tác để cải thiện phản xạ ngôn ngữ và khả năng phát âm một cách tự nhiên.</li>
+                <li>Ngoài ra, học viên còn được luyện tập thông qua các tình huống thực tế như chào hỏi, mua sắm, và thuyết trình.</li>
+                <li>Sau khóa học, bạn sẽ dễ dàng áp dụng những gì học được vào công việc và đời sống.</li>
+            </ul>
+        </div>
+    </div>
+    </section>
+
+    <!--Tiếng Anh Thương Mại-->
+    <section id="business-english">
+    <div class="container">
+        <div class="section-title">Tiếng Anh Thương Mại</div>
+        <div class="content">
+            <p>
+                Khóa Tiếng Anh Thương Mại hướng đến những người cần sử dụng tiếng Anh trong môi trường làm việc.
+            </p>
+            <ul>
+                <li>
+                    Bạn sẽ học cách viết email, thuyết trình, tham gia họp và đàm phán bằng tiếng Anh, 
+                    từ đó nâng cao cơ hội thăng tiến trong sự nghiệp.
+                </li>
+                <li>
+                    Chương trình cũng tập trung vào cách diễn đạt chuyên nghiệp, 
+                    giúp bạn tự tin hơn trong các mối quan hệ đối tác quốc tế.
+                </li>
+                <li>
+                    Đây là khóa học cần thiết cho những ai mong muốn vươn xa trong lĩnh vực kinh doanh.
+                </li>
+            </ul>
+        </div>
+        <div class="image-container">
+            <img src="~/images/zenlish1.jpg" alt="Zenlish">
+        </div>
+    </div>
+    </section>
+
+    <!--Tiếng Anh Du Lịch-->
+    <section id="travel-english">
+    <div class="container1 custom-background">
+        <div class="section-title1">Tiếng Anh Du Lịch</div>
+        <div class="content1">
+            <img src="~/images/classroom1.jpg" alt="Lớp học">
+            <ul>
+                <li>Nếu bạn yêu thích khám phá thế giới, khóa Tiếng Anh Du Lịch là sự lựa chọn hoàn hảo.</li>
+                <li>Khóa học tập trung vào các kỹ năng thực tế như hỏi đường, đặt vé, giao tiếp tại sân bay, nhà hàng, 
+                    và khách sạn để bạn tự tin hơn khi đi du lịch nước ngoài.</li>
+                <li>Các tình huống học tập được mô phỏng sinh động để bạn dễ dàng hình dung và thực hành.</li>
+                <li>Với khóa học này, chuyến đi của bạn sẽ trở nên thú vị và suôn sẻ hơn.</li>
+            </ul>
+        </div>
+    </div>
+    </section>
+    <!--Luyện Thi TOEIC-->
+    <section id="toeic-prep">
+    <div class="container">
+        <div class="section-title">Luyện Thi TOEIC</div>
+        <div class="content">
+            <p>
+                Khóa Luyện Thi TOEIC dành cho những người cần đạt điểm cao trong kỳ thi TOEIC để đáp ứng yêu cầu học tập hoặc công việc.
+            </p>
+            <ul>
+                <li>
+                    Chương trình tập trung vào chiến lược làm bài, cải thiện kỹ năng nghe và đọc hiểu, giúp bạn tối ưu hóa điểm số.
+                </li>
+                <li>
+                    Bên cạnh việc học kỹ năng làm bài, bạn còn được tiếp cận các dạng đề thi sát thực tế.
+                </li>
+                <li>
+                    Học viên sẽ tự tin hơn khi bước vào kỳ thi chính thức nhờ sự chuẩn bị kỹ lưỡng này.
+                </li>
+            </ul>
+        </div>
+        <div class="image-container">
+            <img src="~/images/zenlish1.jpg" alt="Zenlish">
+        </div>
+    </div>
+    </section>
+
+    <!--Tiếng Anh Học Thuật-->
+    <section id="academic-english">
+    <div class="container1 custom-background">
+        <div class="section-title1">Tiếng Anh Học Thuật</div>
+        <div class="content1">
+            <img src="~/images/classroom1.jpg" alt="Lớp học">
+            <ul>
+                <li>Tiếng Anh Học Thuật phù hợp cho học sinh, sinh viên hoặc những người chuẩn bị du học. </li>
+                <li>
+                    Khóa học tập trung phát triển kỹ năng ngôn ngữ trong môi trường học thuật, 
+                    giúp học viên đọc hiểu tài liệu chuyên sâu và viết luận chuyên nghiệp.
+                </li>
+                <li>Bên cạnh đó, bạn còn học cách trình bày ý kiến một cách logic và thuyết phục.</li>
+                <li>Khóa học sẽ mở ra cánh cửa thành công cho những ai muốn chinh phục môi trường học tập quốc tế.</li>
+            </ul>
+        </div>
+    </div>
+    </section>
+
+    <!--Luyện Thi IELTS-->
+    <section id="ielts-prep">
+    <div class="container">
+        <div class="section-title">Luyện Thi IELTS</div>
+        <div class="content">
+            <p>
+                Khóa Luyện Thi IELTS được thiết kế nhằm giúp học viên chuẩn bị tốt nhất cho kỳ thi IELTS.
+            </p>
+            <ul>
+                <li>
+                    Nội dung bao gồm rèn luyện cả bốn kỹ năng
+                    Nghe, Nói, Đọc, Viết với sự hướng dẫn từ các giảng viên giàu kinh nghiệm, đảm bảo bạn đạt được mục tiêu mong muốn.
+                </li>
+                <li>
+                    Ngoài ra, bạn còn được làm quen với các chiến thuật làm bài và tiêu chí chấm điểm của kỳ thi.
+                </li>
+                <li>
+                    Đây là bước đệm quan trọng giúp bạn tiến gần hơn tới mục tiêu du học hoặc định cư.
+                </li>
+            </ul>
+        </div>
+        <div class="image-container">
+            <img src="~/images/zenlish1.jpg" alt="Zenlish">
+        </div>
+    </div>
+    </section>
+
+    <!--Tiếng Anh Thiếu Nhi-->
+    <section id="kids-english">
+    <div class="container1 custom-background">
+        <div class="section-title1">Tiếng Anh Thiếu Nhi</div>
+        <div class="content1">
+            <img src="~/images/classroom1.jpg" alt="Lớp học">
+            <ul>
+                <li>Khóa Tiếng Anh Thiếu Nhi được thiết kế đặc biệt cho trẻ em, 
+                    tạo nền tảng ngôn ngữ từ sớm thông qua các hoạt động học tập vui nhộn và sinh động. </li>
+                <li>
+                    Bé sẽ vừa học vừa chơi, kích thích sự sáng tạo và yêu thích tiếng Anh ngay từ nhỏ.
+                </li>
+                <li>Chương trình học được xây dựng phù hợp với từng lứa tuổi, giúp trẻ tiếp thu một cách tự nhiên.</li>
+                <li>Đây là một món quà quý giá dành cho tương lai của trẻ.</li>
+            </ul>
+        </div>
+    </div>
+    </section>
+    <!--Tiếng Anh Chuyên Ngành IT-->
+    <section id="it-english">
+    <div class="container">
+        <div class="section-title">Tiếng Anh Chuyên Ngành IT</div>
+        <div class="content">
+            <p>
+                Tiếng Anh Chuyên Ngành IT hỗ trợ những người làm việc trong lĩnh vực công nghệ thông tin nâng cao khả năng giao tiếp chuyên môn.
+            </p>
+            <ul>
+                <li>
+                    Bạn sẽ học từ vựng, thuật ngữ kỹ thuật và cách viết tài liệu bằng tiếng Anh một cách chính xác.
+                </li>
+                <li>
+                    Các bài học thực tế giúp bạn sử dụng tiếng Anh hiệu quả trong môi trường làm việc quốc tế.
+                </li>
+                <li>
+                    Đây là lựa chọn tối ưu cho những ai muốn mở rộng cơ hội nghề nghiệp trong lĩnh vực công nghệ.
+                </li>
+            </ul>
+        </div>
+        <div class="image-container">
+            <img src="~/images/zenlish1.jpg" alt="Zenlish">
+        </div>
+    </div>
+    </section>
+
+    <!--Tiếng Anh Phát Âm-->
+    <section id="pronunciation">
+    <div class="container1 custom-background">
+        <div class="section-title1">Tiếng Anh Thiếu Nhi</div>
+        <div class="content1">
+            <img src="~/images/classroom1.jpg" alt="Lớp học">
+            <ul>
+                <li>
+                    Khóa học Tiếng Anh Phát Âm giúp bạn cải thiện cách phát âm chuẩn và tự nhiên,
+                    từ đó nâng cao khả năng giao tiếp.
+                </li>
+                <li>
+                    Các bài tập về ngữ điệu, âm tiết và trọng âm sẽ giúp bạn nói tiếng Anh rõ ràng và tự tin hơn.
+                </li>
+                <li>Đặc biệt, khóa học còn chỉ ra các lỗi phát âm phổ biến để bạn khắc phục.</li>
+                <li>Sau khóa học, giọng nói của bạn sẽ trở nên thu hút và chuyên nghiệp hơn.</li>
+            </ul>
+        </div>
+    </div>
+    </section>
+
+    <!-- Social Icons -->
+    <div class="social-icons">
+        <a href="https://www.facebook.com/profile.php?id=61568798534693"><img src="~/images/fb.png" alt="Facebook"></a>
+        <a href="https://www.google.com/maps?q=https://maps.app.goo.gl/FoT6guuh4vPssHCz5&hl=vi"><img src="~/images/ggmap.jfif" alt="Map"></a>
+    </div>
+
+    <!-- Scroll Up -->
+    <div class="scroll-up" onclick="scrollToTop()">⬆</div>
+
+    <script>
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+
+</body>
+
+</html>
+<style>
+    /* Định dạng form */
+    .form-container {
+        background-color: #0033cc; /* Nền xanh */
+        color: white; /* Chữ trắng */
+        padding: 20px;
+        max-width: 400px; /* Giới hạn chiều rộng */
+        margin: 20px auto; /* Căn giữa */
+        border-radius: 10px; /* Bo góc */
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    }
+
+        .form-container h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .form-container p {
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .form-container label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-container input,
+        .form-container textarea {
+            width: 100%; /* Độ rộng full */
+            padding: 10px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            background-color: #f5f5f5; /* Nền input */
+            color: #333;
+        }
+
+        .form-container textarea {
+            height: 80px; /* Định chiều cao cho textarea */
+            resize: none; /* Không cho chỉnh kích thước */
+        }
+
+        .form-container .btn-register {
+            background-color: #ffcc00; /* Nút màu vàng */
+            color: #0033cc; /* Chữ xanh */
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+            .form-container .btn-register:hover {
+                background-color: #ffd633; /* Hiệu ứng hover */
+            }
+
+
+</style>
 
 <h4>Đăng ký khóa học</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Register">
-            <div class="form-group">
-                <label asp-for="Tenkh" class="control-label"></label>
-                <input asp-for="Tenkh" class="form-control" readonly />
-            </div>
-            <div class="form-group">
-                <label asp-for="Noidung" class="control-label"></label>
-                <input asp-for="Noidung" class="form-control" readonly />
-            </div>
-            <div class="form-group">
-                <label asp-for="Dongia" class="control-label"></label>
-                <input asp-for="Dongia" class="form-control" readonly />
-            </div>
-            <input type="hidden" asp-for="Makh" />
-            <div class="form-group">
-                <input type="submit" value="Register" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
+<div class="form-container">
+    <form asp-action="Register">
+        <!-- Tên khóa học -->
+        <div class="form-group">
+            <label asp-for="Tenkh" class="form-label">Tên khóa học</label>
+            <input asp-for="Tenkh" class="form-control" readonly />
+        </div>
+
+        <!-- Nội dung -->
+        <div class="form-group">
+            <label asp-for="Noidung" class="form-label">Nội dung</label>
+            <textarea asp-for="Noidung" class="form-control" readonly></textarea>
+        </div>
+
+        <!-- Đơn giá -->
+        <div class="form-group">
+            <label asp-for="Dongia" class="form-label">Đơn giá</label>
+            <input asp-for="Dongia" class="form-control" readonly />
+        </div>
+
+        <!-- Ẩn mã khóa học -->
+        <input type="hidden" asp-for="Makh" />
+
+        <!-- Nút đăng ký -->
+        <div class="form-group text-center">
+            <input type="submit" value="Register" class="btn btn-primary btn-register" />
+        </div>
+    </form>
 </div>
+

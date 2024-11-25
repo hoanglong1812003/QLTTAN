@@ -116,6 +116,12 @@ namespace DoAnCoSo.Controllers
         // Action xóa phiếu đăng kí
         public async Task<IActionResult> Delete(int? id)
         {
+            var loaiuser = HttpContext.Session.GetString("Loaiuser");
+            if (loaiuser != "Admin" && loaiuser != "Giangvien" && loaiuser != "Giảng viên" && loaiuser != "Nhân viên nhập liệu")
+            {
+                ViewData["Message"] = "Bạn không có quyền xóa";
+                return View("AccessDenied");
+            }
             if (id == null)
             {
                 return NotFound();

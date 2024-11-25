@@ -48,7 +48,7 @@ namespace DoAnCoSo.Controllers
         public IActionResult Create()
         {
             var loaiuser = HttpContext.Session.GetString("Loaiuser");
-            if (loaiuser != "Admin")
+            if (loaiuser != "Admin" && loaiuser != "Nhân viên nhập liệu")
             {
                 ViewData["Message"] = "Bạn không có quyền thêm mới";
                 return View("AccessDenied");
@@ -65,7 +65,7 @@ namespace DoAnCoSo.Controllers
         public async Task<IActionResult> Create([Bind("Mahd,Manv,Noidung,Sotien")] Hoadonchitieu hoadonchitieu)
         {
             var loaiuser = HttpContext.Session.GetString("Loaiuser");
-            if (loaiuser != "Admin")
+            if (loaiuser != "Admin" && loaiuser != "Nhân viên nhập liệu")
             {
                 ViewData["Message"] = "Bạn không có quyền thêm mới";
                 return View("AccessDenied");
@@ -84,7 +84,7 @@ namespace DoAnCoSo.Controllers
         public async Task<IActionResult> Edit(int? id)
         {
             var loaiuser = HttpContext.Session.GetString("Loaiuser");
-            if (loaiuser != "Admin")
+            if (loaiuser != "Admin" && loaiuser != "Nhân viên nhập liệu")
             {
                 ViewData["Message"] = "Bạn không có quyền chỉnh sửa";
                 return View("AccessDenied");
@@ -111,7 +111,7 @@ namespace DoAnCoSo.Controllers
         public async Task<IActionResult> Edit(int id, [Bind("Mahd,Manv,Noidung,Sotien")] Hoadonchitieu hoadonchitieu)
         {
             var loaiuser = HttpContext.Session.GetString("Loaiuser");
-            if (loaiuser != "Admin")
+            if (loaiuser != "Admin" && loaiuser != "Nhân viên nhập liệu")
             {
                 ViewData["Message"] = "Bạn không có quyền chỉnh sửa";
                 return View("AccessDenied");
@@ -149,7 +149,7 @@ namespace DoAnCoSo.Controllers
         public async Task<IActionResult> Delete(int? id)
         {
             var loaiuser = HttpContext.Session.GetString("Loaiuser");
-            if (loaiuser != "Admin")
+            if (loaiuser != "Admin" && loaiuser != "Nhân viên nhập liệu")
             {
                 ViewData["Message"] = "Bạn không có quyền xóa";
                 return View("AccessDenied");
@@ -176,7 +176,7 @@ namespace DoAnCoSo.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var loaiuser = HttpContext.Session.GetString("Loaiuser");
-            if (loaiuser != "Admin")
+            if (loaiuser != "Admin" && loaiuser != "Nhân viên nhập liệu")
             {
                 ViewData["Message"] = "Bạn không có quyền xóa";
                 return View("AccessDenied");

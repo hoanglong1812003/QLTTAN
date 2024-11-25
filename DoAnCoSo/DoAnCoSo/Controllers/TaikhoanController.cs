@@ -17,19 +17,26 @@ namespace DoAnCoSo.Controllers
         }
 
         [HttpGet]
-        [AllowAnonymous]
         public IActionResult Register()
         {
+            var loaiuser = HttpContext.Session.GetString("Loaiuser");
+            if (loaiuser != "Admin")
+            {
+                ViewData["Message"] = "Bạn không có quyền tạo tài khoản";
+                return View("AccessDenied");
+            }
             return View();
         }
 
+
         [HttpPost]
-        [AllowAnonymous]
         public async Task<IActionResult> Register(string username, string password, string loaiuser)
         {
-            if (HttpContext.Session.GetString("Loaiuser") != "Admin")
+            var currentUserRole = HttpContext.Session.GetString("Loaiuser");
+            if (currentUserRole != "Admin")
             {
-                return Unauthorized(); // Or return a view that indicates lack of permission
+                ViewData["Message"] = "Bạn không có quyền tạo tài khoản";
+                return View("AccessDenied");
             }
 
             if (ModelState.IsValid)
@@ -49,6 +56,7 @@ namespace DoAnCoSo.Controllers
 
             return View();
         }
+
 
         [HttpGet]
         [AllowAnonymous]
@@ -84,6 +92,7 @@ namespace DoAnCoSo.Controllers
             return View();
         }
 
+
         [AllowAnonymous]
         public IActionResult Logout()
         {
@@ -99,8 +108,6 @@ namespace DoAnCoSo.Controllers
             var accounts = _context.Taikhoans.ToList();
             return View(accounts);
         }
-
-        
 
         [HttpGet]
         [Authorize(Roles = "Admin")]
@@ -139,11 +146,5 @@ namespace DoAnCoSo.Controllers
             }
             return View(taikhoan);
         }
-
-      
-
-      
-
-       
     }
 }

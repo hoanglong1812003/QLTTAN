@@ -21,6 +21,21 @@ builder.Services.AddSession(options =>
 
 builder.Services.AddHttpContextAccessor();
 
+// Add authentication with cookie
+builder.Services.AddAuthentication("CookieAuthentication")
+    .AddCookie("CookieAuthentication", config =>
+    {
+        config.Cookie.Name = "UserLoginCookie";
+        config.LoginPath = "/Taikhoan/Login";
+        config.AccessDeniedPath = "/Taikhoan/AccessDenied";
+    });
+
+// Add authorization
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("Admin", policy => policy.RequireRole("Admin"));
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -37,7 +52,11 @@ app.UseRouting();
 
 // Use session
 app.UseSession();
+
+// Use authentication
 app.UseAuthentication();
+
+// Use authorization
 app.UseAuthorization();
 
 app.MapControllerRoute(

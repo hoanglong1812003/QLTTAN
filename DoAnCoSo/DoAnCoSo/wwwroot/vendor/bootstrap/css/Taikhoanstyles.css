@@ -1,0 +1,94 @@
+﻿body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+    gap: 50px;
+}
+
+.form-box {
+    width: 350px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.login-box {
+    background-color: #0044cc;
+    color: white;
+}
+
+    .login-box input {
+        background-color: #ffffff;
+        color: #000;
+    }
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #0044cc;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.google-login {
+    margin-top: 10px;
+    background-color: white;
+    color: #000;
+    border: 1px solid #ccc;
+    text-align: center;
+    padding: 10px;
+}
+
+.btn:hover {
+    background-color: #003399;
+}
+
+.forgot-password {
+    display: block;
+    text-align: right;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: white;
+    text-decoration: underline;
+}
+
+.register-box {
+    background-color: #f4f4f4;
+    color: #000;
+}
+
+    .register-box .btn {
+        background-color: #0044cc;
+        color: white;
+    }
